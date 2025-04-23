@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:gravity="center_horizontal"
+    android:background="@color/white">
+
+    <TextView
+        android:id="@+id/text_judul_topik"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Judul Topik"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="12dp"
+        android:textColor="@color/black" />
+
+    <!-- Kartu Info Topik -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/kuningkuis"
+        app:cardCornerRadius="20dp"
+        android:elevation="6dp"
+        android:layout_marginBottom="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/text_kelas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kelas: -" />
+
+            <TextView
+                android:id="@+id/text_pembuat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dibuat oleh: -" />
+
+            <TextView
+                android:id="@+id/text_jumlah_soal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Jumlah soal: -" />
+
+            <TextView
+                android:id="@+id/text_durasi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Durasi: -" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Tombol Aksi -->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:weightSum="2">
+
+        <Button
+            android:id="@+id/btn_mulai"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Mulai"
+            android:backgroundTint="@color/kuningkuis"
+            android:textStyle="bold" />
+
+        <View android:layout_width="16dp" android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/btn_kembali"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Kembali"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/black" />
+    </LinearLayout>
+</LinearLayout>
