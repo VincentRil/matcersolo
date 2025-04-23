@@ -13,7 +13,9 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var namaLengkap: EditText
     private lateinit var namaPengguna: EditText
     private lateinit var kataSandi: EditText
-    private lateinit var kelas: Spinner
+    private lateinit var kelasSpinner: Spinner
+    private lateinit var kodeAkses: EditText
+    private lateinit var kodeLayout: TextInputLayout
     private lateinit var radioGuru: RadioButton
     private lateinit var radioSiswa: RadioButton
     private lateinit var tombolDaftar: Button
@@ -23,50 +25,61 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
-        // Inisialisasi view
         namaLengkap = findViewById<TextInputLayout>(R.id.namalengkapRegis).editText!!
         namaPengguna = findViewById<TextInputLayout>(R.id.namapenggunaRegis).editText!!
         kataSandi = findViewById(R.id.katasandiRegis)
-        kelas = findViewById(R.id.KelasRegis)
+        kelasSpinner = findViewById(R.id.kelas)
+        kodeLayout = findViewById(R.id.inputKodeRegis)
+        kodeAkses = findViewById(R.id.kodeRegis)
         radioGuru = findViewById(R.id.RegisGuru)
         radioSiswa = findViewById(R.id.RegisSiswa)
         tombolDaftar = findViewById(R.id.tombolRegis)
 
         prefs = getSharedPreferences("user_data", MODE_PRIVATE)
 
-        // Tampilkan spinner kelas hanya jika role siswa dipilih
+        // Tampilkan input kode hanya jika guru dipilih
         val radioGroup = findViewById<RadioGroup>(R.id.radiogrupRegis)
         radioGroup.setOnCheckedChangeListener { _, checkedId ->
-            if (checkedId == R.id.RegisSiswa) {
-                kelas.visibility = View.VISIBLE
-            } else {
-                kelas.visibility = View.GONE
-            }
+            kodeLayout.visibility = if (checkedId == R.id.RegisGuru) View.VISIBLE else View.GONE
         }
+        kodeLayout.visibility = if (radioGuru.isChecked) View.VISIBLE else View.GONE
 
         tombolDaftar.setOnClickListener {
             val nama = namaLengkap.text.toString().trim()
             val username = namaPengguna.text.toString().trim()
             val sandi = kataSandi.text.toString().trim()
+            val kelas = kelasSpinner.selectedItem.toString()
+            val kode = kodeAkses.text.toString().trim()
             val role = if (radioGuru.isChecked) "guru" else "siswa"
-            val kelasDipilih = if (role == "siswa") kelas.selectedItem.toString() else ""
 
-            // Validasi input
-            if (nama.isEmpty() || username.isEmpty() || sandi.isEmpty()) {
+            // Validasi input kosong
+            if (nama.isEmpty() || username.isEmpty() || sandi.isEmpty() || kelas == "Pilih kelas") {
                 Toast.makeText(this, "Semua field wajib diisi", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            if (role == "siswa" && kelasDipilih.isEmpty()) {
-                Toast.makeText(this, "Pilih kelas terlebih dahulu", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
+            // Validasi kode akses guru
+            val kodeAksesValid = "GURU123"
+            if (role == "guru") {
+                if (kode.isEmpty()) {
+                    Toast.makeText(this, "Masukkan kode akses guru", Toast.LENGTH_SHORT).show()
+                    return@setOnClickListener
+                }
+
+                if (kode != kodeAksesValid) {
+                    Toast.makeText(this, "Kode akses guru salah!", Toast.LENGTH_SHORT).show()
+                    return@setOnClickListener
+                }
             }
 
-            // Simpan ke SharedPreferences
+            // Simpan data berdasarkan username
             val editor = prefs.edit()
-            editor.putString("${role}_username", username)
-            editor.putString("${role}_password", sandi)
-            if (role == "siswa") editor.putString("siswa_kelas", kelasDipilih)
+            editor.putString("${username}_password", sandi)
+            editor.putString("${username}_kelas", kelas)
+            editor.putString("${username}_role", role)
+            if (role == "guru") {
+                editor.putString("${username}_kode", kode)
+            }
             editor.apply()
 
             Toast.makeText(this, "Registrasi berhasil!", Toast.LENGTH_SHORT).show()

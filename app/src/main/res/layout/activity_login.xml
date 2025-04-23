@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -8,6 +9,7 @@
     android:background="@color/biru"
     tools:context=".MainActivity">
 
+    <!-- Backgrounds -->
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -37,16 +39,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/texmath" />
 
+    <!-- Input Nama Pengguna -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/inputnama"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:background="@drawable/bginput"
-
-
         android:maxLength="20"
-        android:textColor="@color/birutua"
         android:textColorHint="@color/birutua"
         app:hintTextColor="@color/birutua"
         app:layout_constraintEnd_toEndOf="parent"
@@ -54,78 +54,64 @@
         app:layout_constraintTop_toBottomOf="@id/nama_app">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:hint="nama pengguna"
-            android:inputType="text"
             android:id="@+id/inputname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/bginput"
-            android:textColor="@color/birutua" />
-
+            android:hint="nama pengguna"
+            android:inputType="text"
+            android:textColor="@color/birutua"
+            android:textColorHint="@color/birutua"
+            android:background="@drawable/bginput"/>
     </com.google.android.material.textfield.TextInputLayout>
 
+    <!-- Input Kata Sandi -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/kata_sandi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:background="@drawable/bginput"
-        app:hintTextColor="@color/birutua"
         android:textColorHint="@color/birutua"
+        app:hintTextColor="@color/birutua"
         app:endIconMode="password_toggle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-
         app:layout_constraintTop_toBottomOf="@id/inputnama">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/inputPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/bginput"
             android:inputType="textPassword"
-            android:hint="Kata Sandi"
-            android:textColor="@color/birutua" />
+            android:hint="kata sandi"
+            android:textColor="@color/birutua"
+            android:textColorHint="@color/birutua"
+            android:background="@drawable/bginput"/>
     </com.google.android.material.textfield.TextInputLayout>
 
-
-    <!-- Pilih Role -->
-    <Spinner
-        android:id="@+id/Role"
-        android:background="@drawable/bginput"
-        android:layout_marginTop="25dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:entries="@array/roles"
-        android:theme="@style/SpinnerThemeOverlay"
-
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/kata_sandi" />
-
-    <!-- Pilih Kelas (untuk Siswa) -->
+    <!-- Spinner Pilih Kelas -->
     <Spinner
         android:id="@+id/kelas"
-        android:background="@drawable/bginput"
-        android:layout_marginTop="25dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/bginput"
+        android:layout_marginTop="25dp"
         android:entries="@array/class_list"
         android:theme="@style/SpinnerThemeOverlay"
+        app:layout_constraintTop_toBottomOf="@id/kata_sandi"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/Role"/>
+        app:layout_constraintEnd_toEndOf="parent"/>
 
-
+    <!-- Tombol Login & Daftar -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:gravity="center"
         android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/kelas"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/kelas">
+        app:layout_constraintEnd_toEndOf="parent">
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/tombol_login"
@@ -133,8 +119,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/login_selector"
             android:text="MASUK"
-            android:textColor="@color/black"
-             />
+            android:textColor="@color/black"/>
 
         <Space
             android:layout_width="44dp"
@@ -146,9 +131,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/regis_selector"
             android:text="DAFTAR"
-            android:textColor="@color/birutua" />
-
+            android:textColor="@color/birutua"/>
     </LinearLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -24,8 +25,7 @@
         android:background="@drawable/teksturmath"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/nama_app2"
@@ -50,7 +50,6 @@
         android:layout_marginTop="25dp">
 
         <com.google.android.material.textfield.TextInputEditText
-
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
@@ -82,6 +81,19 @@
             android:background="@drawable/bginput"/>
     </com.google.android.material.textfield.TextInputLayout>
 
+    <!-- Spinner Pilih Kelas -->
+    <Spinner
+        android:id="@+id/kelas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bginput"
+        android:layout_marginTop="25dp"
+        android:entries="@array/class_list"
+        android:theme="@style/SpinnerThemeOverlay"
+        app:layout_constraintTop_toBottomOf="@id/namapenggunaRegis"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
     <!-- Kata Sandi -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/katasandiRegislay"
@@ -90,7 +102,7 @@
         android:background="@drawable/bginput"
         android:textColorHint="@color/birutua"
         app:endIconMode="password_toggle"
-        app:layout_constraintTop_toBottomOf="@id/namapenggunaRegis"
+        app:layout_constraintTop_toBottomOf="@id/kelas"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="20dp">
@@ -137,20 +149,29 @@
             android:textColor="@color/birutua"/>
     </RadioGroup>
 
-    <!-- Spinner Kelas (tampil jika siswa) -->
-    <androidx.appcompat.widget.AppCompatSpinner
-        android:id="@+id/KelasRegis"
+    <!-- Input Kode Akses (hanya untuk guru) -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/inputKodeRegis"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/bginput"
-        android:spinnerMode="dropdown"
-        android:entries="@array/class_list"
-        android:theme="@style/SpinnerThemeOverlay"
+        android:textColorHint="@color/birutua"
         app:layout_constraintTop_toBottomOf="@id/radiogrupRegis"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="20dp"
-        android:visibility="gone" />
+        android:visibility="visible">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/kodeRegis"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="kode akses (khusus guru)"
+            android:inputType="text"
+            android:textColor="@color/birutua"
+            android:textColorHint="@color/birutua"
+            android:background="@drawable/bginput"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <!-- Tombol Daftar -->
     <androidx.appcompat.widget.AppCompatButton
@@ -160,7 +181,7 @@
         android:background="@drawable/regis_selector"
         android:text="DAFTAR"
         android:textColor="@color/birutua"
-        app:layout_constraintTop_toBottomOf="@id/KelasRegis"
+        app:layout_constraintTop_toBottomOf="@id/inputKodeRegis"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="25dp"/>

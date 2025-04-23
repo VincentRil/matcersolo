@@ -7,6 +7,18 @@
     tools:context=".BerandaGuruFragment">
 
 
+
+    <ImageView
+        android:id="@+id/logoutbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_logout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="15dp"/>
+
+
     <TextView
         android:id="@+id/namaGuruBeranda"
         android:layout_width="wrap_content"
