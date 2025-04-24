@@ -9,6 +9,36 @@
     android:background="@color/biru"
     tools:context=".MainActivity">
 
+
+
+
+        <ImageView
+            android:id="@+id/logo_sekolah"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/logo_sekolah"/>
+
+        <TextView
+            android:id="@+id/nama_sekolah"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="SD KATOLIK 08 SANTO ANTONIUS"
+            android:textColor="@color/white"
+            android:layout_marginTop="40dp"
+            app:layout_constraintStart_toEndOf="@id/logo_sekolah"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textSize="18sp" />
+
+
+
+
+
     <!-- Backgrounds -->
     <ImageView
         android:layout_width="match_parent"
