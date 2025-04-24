@@ -20,12 +20,12 @@
         android:label="Detail Topik">
         <action
             android:id="@+id/action_detailTopikSiswaFragment_to_soalSiswaFragment"
-            app:destination="@id/soalSiswaFragment" />
+            app:destination="@id/mulaiSoalSiswaFragment" />
     </fragment>
 
     <fragment
-        android:id="@+id/soalSiswaFragment"
-        android:name="com.example.matematika_cer.SoalSiswaFragment"
+        android:id="@+id/mulaiSoalSiswaFragment"
+        android:name="com.example.matematika_cer.MulaiSoalSiswaFragment"
         android:label="Soal Siswa" />
 
     <fragment
@@ -94,6 +94,7 @@
         android:id="@+id/buatSoalFragment"
         android:name="com.example.matematika_ceria.fragment.BuatSoalFragment"
         android:label="Buat Soal">
+
         <action
             android:id="@+id/action_buatSoalFragment_to_daftarTopikFragment"
             app:destination="@id/daftarTopikFragment" />
