@@ -7,7 +7,7 @@
     <!-- Fragment untuk Role Siswa -->
     <fragment
         android:id="@+id/berandaSiswaFragment"
-        android:name="com.example.matematika_cer.BerandaSiswaFragment"
+        android:name="com.example.matematika_cer.siswa.BerandaSiswaFragment"
         android:label="Beranda Siswa">
         <action
             android:id="@+id/action_berandaSiswaFragment_to_detailTopikSiswaFragment"
@@ -16,7 +16,7 @@
 
     <fragment
         android:id="@+id/detailTopikSiswaFragment"
-        android:name="com.example.matematika_cer.DetailTopikSiswaFragment"
+        android:name="com.example.matematika_cer.guru.DetailTopikSiswaFragment"
         android:label="Detail Topik">
         <action
             android:id="@+id/action_detailTopikSiswaFragment_to_soalSiswaFragment"
@@ -25,22 +25,22 @@
 
     <fragment
         android:id="@+id/mulaiSoalSiswaFragment"
-        android:name="com.example.matematika_cer.MulaiSoalSiswaFragment"
+        android:name="com.example.matematika_cer.siswa.MulaiSoalSiswaFragment"
         android:label="Soal Siswa" />
 
     <fragment
         android:id="@+id/daftarsiswaFragment"
-        android:name="com.example.matematika_cer.fragment.DaftarSiswa"
+        android:name="com.example.matematika_cer.guru.DaftarSiswa"
         android:label="Daftar Siswa" />
 
     <fragment
         android:id="@+id/riwayatkuissiswaFragment"
-        android:name="com.example.matematika_cer.RiwayatKuisFragment"
+        android:name="com.example.matematika_cer.siswa.RiwayatKuisFragment"
         android:label="Riwayat Kuis" />
 
     <fragment
         android:id="@+id/nilaisiswaFragment"
-        android:name="com.example.matematika_cer.NilaiSiswaFragment"
+        android:name="com.example.matematika_cer.siswa.NilaiSiswaFragment"
         android:label="Nilai Siswa">
         <action
             android:id="@+id/action_nilaiSiswa_to_detailNilaiSiswa"
@@ -50,7 +50,7 @@
     <!-- Fragment untuk Role Guru -->
     <fragment
         android:id="@+id/berandaGuruFragment"
-        android:name="com.example.matematika_cer.BerandaGuruFragment"
+        android:name="com.example.matematika_cer.guru.BerandaGuruFragment"
         android:label="Beranda Guru">
         <action
             android:id="@+id/action_beranda_to_daftarTopik"
@@ -68,17 +68,17 @@
 
     <fragment
         android:id="@+id/daftarTopikFragment"
-        android:name="com.example.matematika_cer.DaftarTopikFragment"
+        android:name="com.example.matematika_cer.guru.DaftarTopikFragment"
         android:label="Daftar Topik" />
 
     <fragment
         android:id="@+id/bankSoalFragment"
-        android:name="com.example.matematika_ceria.fragment.BankSoalFragment"
+        android:name="com.example.matematika_cer.guru.BankSoalFragment"
         android:label="Bank Soal" />
 
     <fragment
         android:id="@+id/tambahTopikSoalFragment"
-        android:name="com.example.matematika_cer.BuatTopikdanSoalFragment"
+        android:name="com.example.matematika_cer.guru.BuatTopikdanSoalFragment"
         android:label="Tambah Topik dan Soal" >
         <action
             android:id="@+id/action_tambahTopikSoalFragment_to_buatSoalFragment"
@@ -87,12 +87,12 @@
 
     <fragment
         android:id="@+id/editTopikSoalFragment"
-        android:name="com.example.matematika_cer.EditTopikdanSoalFragment"
+        android:name="com.example.matematika_cer.guru.EditTopikdanSoalFragment"
         android:label="Edit Topik dan Soal" />
 
     <fragment
         android:id="@+id/buatSoalFragment"
-        android:name="com.example.matematika_ceria.fragment.BuatSoalFragment"
+        android:name="com.example.matematika_cer.guru.BuatSoalFragment"
         android:label="Buat Soal">
 
         <action
@@ -102,6 +102,6 @@
 
     <fragment
         android:id="@+id/detailNilaiSiswaFragment"
-        android:name="com.example.matematika_cer.DetailNilaiSiswaFragment"
+        android:name="com.example.matematika_cer.guru.DetailNilaiSiswaFragment"
         android:label="Detail Nilai Siswa" />
 </navigation>

@@ -1,3 +1,6 @@
+package com.example.matematika_cer.guru
+
+import com.example.matematika_cer.siswa.SoalModel
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 

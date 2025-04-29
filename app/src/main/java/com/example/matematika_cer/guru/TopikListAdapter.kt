@@ -1,11 +1,11 @@
-package com.example.matematika_cer
+package com.example.matematika_cer.guru
 
-import TopikModel
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.matematika_cer.R
 
 class TopikListAdapter(private var list: List<TopikModel>) :
     RecyclerView.Adapter<TopikListAdapter.TopikViewHolder>() {

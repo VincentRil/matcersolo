@@ -1,11 +1,11 @@
-package com.example.matematika_cer
+package com.example.matematika_cer.loginregis
 
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import androidx.navigation.ui.NavigationUI
+import com.example.matematika_cer.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

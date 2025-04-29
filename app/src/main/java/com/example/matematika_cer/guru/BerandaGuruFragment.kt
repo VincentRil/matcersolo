@@ -1,4 +1,4 @@
-package com.example.matematika_cer
+package com.example.matematika_cer.guru
 
 
 import androidx.navigation.fragment.findNavController
@@ -15,6 +15,8 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
+import com.example.matematika_cer.loginregis.LoginActivity
+import com.example.matematika_cer.R
 
 class BerandaGuruFragment : Fragment() {
 

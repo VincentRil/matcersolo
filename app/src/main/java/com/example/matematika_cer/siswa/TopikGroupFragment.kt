@@ -1,6 +1,6 @@
-package com.example.matematika_cer
+package com.example.matematika_cer.siswa
 
-import TopikModel
+import com.example.matematika_cer.guru.TopikModel
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.matematika_cer.R
+import com.example.matematika_cer.guru.TopikListAdapter
 
 class TopikGroupFragment : Fragment() {
 

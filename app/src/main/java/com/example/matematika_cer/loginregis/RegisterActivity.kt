@@ -1,4 +1,4 @@
-package com.example.matematika_cer
+package com.example.matematika_cer.loginregis
 
 import android.content.Intent
 import android.content.SharedPreferences
@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.example.matematika_cer.R
 import com.google.android.material.textfield.TextInputLayout
 
 class RegisterActivity : AppCompatActivity() {

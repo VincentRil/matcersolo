@@ -35,13 +35,16 @@
     <!-- Waktu -->
     <TextView
         android:id="@+id/teks_timer"
+        android:background="@drawable/bg_timer_siswa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:text="05:00"
+        android:textColor="@color/white"
         android:padding="6dp"
-        android:layout_gravity="end" />
+        android:gravity="center"
+        android:layout_gravity="center" />
 
     <!-- Pertanyaan -->
     <TextView
@@ -68,10 +71,39 @@
         app:layout_constraintTop_toBottomOf="@id/teks_pertanyaan"
         android:layout_marginTop="50dp">
 
-        <RadioButton android:id="@+id/jawaban_a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="A. 15" />
-        <RadioButton android:id="@+id/jawaban_b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="B. 5" />
-        <RadioButton android:id="@+id/jawaban_c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="C. 12" />
-        <RadioButton android:id="@+id/jawaban_d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="D. 20" />
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/jawaban_a"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="A. 15"
+            android:background="@drawable/bg_opsi_siswa"
+            android:textColor="@color/black"
+            android:buttonTint="@color/black"/>
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/jawaban_b"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="B. 5"
+            android:background="@drawable/bg_opsi_siswa"
+            android:textColor="@color/black"
+            android:buttonTint="@color/black"/>
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/jawaban_c"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="C. 12"
+            android:buttonTint="@color/black"
+            android:background="@drawable/bg_opsi_siswa"
+            android:textColor="@color/black"/>
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/jawaban_d"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="D. 20"
+            android:buttonTint="@color/black"
+
+            android:background="@drawable/bg_opsi_siswa"
+            android:textColor="@color/black"/>
     </RadioGroup>
 
     <!-- Tombol -->

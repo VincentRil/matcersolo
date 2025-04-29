@@ -1,9 +1,10 @@
-package com.example.matematika_cer
+package com.example.matematika_cer.loginregis
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.example.matematika_cer.R
 
 class LoginActivity : AppCompatActivity() {
 

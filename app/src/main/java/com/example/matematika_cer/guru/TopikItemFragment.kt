@@ -1,6 +1,4 @@
-package com.example.matematika_cer
-
-import TopikModel
+package com.example.matematika_cer.guru
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import com.example.matematika_cer.R
 
 class TopikItemFragment : Fragment() {
 

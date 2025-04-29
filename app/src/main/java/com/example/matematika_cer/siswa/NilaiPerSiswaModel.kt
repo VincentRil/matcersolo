@@ -1,4 +1,4 @@
-package com.example.matematika_cer.model
+package com.example.matematika_cer.siswa
 
 data class NilaiPerSiswaModel(
     val nis: String,
