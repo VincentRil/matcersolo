@@ -8,9 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.viewpager2.widget.ViewPager2
 import com.example.matematika_cer.R
+import com.example.matematika_cer.model.TopikModel
 import com.example.matematika_cer.siswa.TopikPagerAdapter
+import com.example.matematika_cer.viewmodel.SharedTopikViewModel
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -21,6 +24,7 @@ class DaftarTopikFragment : Fragment() {
     private lateinit var searchEditText: EditText
 
     private lateinit var semuaTopik: List<TopikModel>
+    private val topikViewModel: SharedTopikViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,45 +40,9 @@ class DaftarTopikFragment : Fragment() {
         tabLayout = view.findViewById(R.id.tabDots)
         searchEditText = view.findViewById(R.id.searchEditText)
 
-        // Dummy data
-        semuaTopik = listOf(
-            TopikModel(
-                "Deret Bilangan",
-                "30 menit",
-                15,
-                "25 Maret 2025",
-                jumlahMenjawab = 9,
-                totalPeserta = 11
-            ),
-            TopikModel(
-                "Perkalian dan Pembagian",
-                "20 menit",
-                10,
-                "26 Maret 2025",
-                jumlahMenjawab = 7,
-                totalPeserta = 10
-            ),
-            TopikModel(
-                "Pecahan",
-                "25 menit",
-                12,
-                "27 Maret 2025",
-                jumlahMenjawab = 10,
-                totalPeserta = 12
-            ),
-            TopikModel(
-                "Desimal",
-                "15 menit",
-                8,
-                "28 Maret 2025",
-                jumlahMenjawab = 6,
-                totalPeserta = 8
-            )
-        )
-
+        semuaTopik = topikViewModel.daftarTopikSementara
         tampilkanTopikKeViewPager(semuaTopik)
 
-        // 🔍 Logika Search
         searchEditText.addTextChangedListener(object : TextWatcher {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 val hasilFilter = semuaTopik.filter {
@@ -90,7 +58,18 @@ class DaftarTopikFragment : Fragment() {
 
     private fun tampilkanTopikKeViewPager(list: List<TopikModel>) {
         val groupedTopik = list.chunked(3)
-        val adapter = TopikPagerAdapter(requireActivity(), groupedTopik)
+
+        val adapter = TopikPagerAdapter(
+            requireActivity(),
+            groupedTopik,
+            onTopikClick = { topik ->
+                // Aksi klik topik oleh guru, bisa kosong
+            },
+            onTopikLongClick = { topik ->
+                // Aksi long click juga bisa kosong karena hanya lihat
+            }
+        )
+
         viewPager.adapter = adapter
         TabLayoutMediator(tabLayout, viewPager) { _, _ -> }.attach()
     }

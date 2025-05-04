@@ -14,9 +14,8 @@
         android:id="@+id/kartu_detail_siswa"
         android:layout_width="match_parent"
         android:layout_height="286dp"
-        android:backgroundTint="@color/kuningkuis"
         android:elevation="6dp"
-        app:cardCornerRadius="20dp"
+        app:cardCornerRadius="30dp"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="50dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -27,6 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
+            android:background="@drawable/bg_detailtopiksiswa"
             android:padding="16dp">
 
             <TextView

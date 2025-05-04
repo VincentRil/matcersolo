@@ -88,16 +88,29 @@
     <fragment
         android:id="@+id/editTopikSoalFragment"
         android:name="com.example.matematika_cer.guru.EditTopikdanSoalFragment"
-        android:label="Edit Topik dan Soal" />
+        android:label="Edit Topik dan Soal">
+        <action
+            android:id="@+id/action_editTopikdanSoalFragment_to_detailEditSoalFragment"
+            app:destination="@id/detailEditSoalFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/buatSoalFragment"
         android:name="com.example.matematika_cer.guru.BuatSoalFragment"
         android:label="Buat Soal">
-
         <action
             android:id="@+id/action_buatSoalFragment_to_daftarTopikFragment"
             app:destination="@id/daftarTopikFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/detailEditSoalFragment"
+        android:name="com.example.matematika_cer.guru.DetailEditSoalFragment"
+        android:label="Edit Soal">
+        <!-- ✅ Tambahkan navigasi ke BuatSoalFragment -->
+        <action
+            android:id="@+id/action_detailEditSoalFragment_to_buatSoalFragment"
+            app:destination="@id/buatSoalFragment" />
     </fragment>
 
     <fragment

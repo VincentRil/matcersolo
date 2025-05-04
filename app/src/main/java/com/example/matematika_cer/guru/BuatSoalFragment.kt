@@ -1,22 +1,20 @@
 package com.example.matematika_cer.guru
 
-import com.example.matematika_cer.siswa.SoalModel
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.RadioGroup
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.matematika_cer.R
+import com.example.matematika_cer.model.TopikModel
+import com.example.matematika_cer.siswa.SoalModel
+import com.example.matematika_cer.viewmodel.SharedTopikViewModel
 import java.util.UUID
 
 class BuatSoalFragment : Fragment() {
@@ -28,16 +26,17 @@ class BuatSoalFragment : Fragment() {
     private lateinit var etD: EditText
     private lateinit var rgJawaban: RadioGroup
     private lateinit var tvSoalKe: TextView
-    private lateinit var btnBerikut: Button
+    private lateinit var btnSimpan: Button
     private lateinit var btnKembali: Button
     private lateinit var imgSoal: ImageView
 
     private var uriGambar: Uri? = null
-
     private lateinit var topik: TopikModel
+    private val topikViewModel: SharedTopikViewModel by activityViewModels()
+
     private var jumlahSoal = 0
     private var indeksSoal = 1
-    private val listSoal = mutableListOf<SoalModel>()
+    private val listSoalBaru = mutableListOf<SoalModel>()
 
     private val launcherGaleri = registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
         uri?.let {
@@ -63,7 +62,7 @@ class BuatSoalFragment : Fragment() {
         etD = view.findViewById(R.id.etD)
         rgJawaban = view.findViewById(R.id.rgJawaban)
         tvSoalKe = view.findViewById(R.id.tvSoalKe)
-        btnBerikut = view.findViewById(R.id.btnSoalBerikut)
+        btnSimpan = view.findViewById(R.id.btnSoalBerikut)
         btnKembali = view.findViewById(R.id.btnKembali)
         imgSoal = view.findViewById(R.id.imgSoal)
 
@@ -77,58 +76,62 @@ class BuatSoalFragment : Fragment() {
             return
         }
 
-        jumlahSoal = topik.jumlahSoal
-        updateJudulSoal()
+        val mode = arguments?.getString("mode")
+        val tambahan = arguments?.getInt("tambahan", 0) ?: 0
 
+        jumlahSoal = when (mode) {
+            "EDIT" -> tambahan
+            else -> topik.jumlahSoal
+        }
+
+        updateJudulSoal()
         isiFormJikaAda()
 
-        btnBerikut.setOnClickListener {
+        btnSimpan.setOnClickListener {
             if (validInput()) {
-                if (indeksSoal <= listSoal.size) {
-                    listSoal[indeksSoal - 1] = buatSoal()
+                if (indeksSoal <= listSoalBaru.size) {
+                    listSoalBaru[indeksSoal - 1] = buatSoal()
                 } else {
-                    listSoal.add(buatSoal())
+                    listSoalBaru.add(buatSoal())
                 }
 
                 if (indeksSoal < jumlahSoal) {
                     indeksSoal++
-                    isiFormJikaAda()
                     updateJudulSoal()
+                    isiFormJikaAda()
                 } else {
-                    val topikLengkap = topik.copy(soalList = listSoal)
-                    // TODO: simpan ke database
-                    Toast.makeText(
-                        requireContext(),
-                        "Topik & soal berhasil dibuat!",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    findNavController().navigate(R.id.action_buatSoalFragment_to_daftarTopikFragment)
+                    if (mode == "EDIT") {
+                        topik.soalList.addAll(listSoalBaru)
+                    } else {
+                        topik.soalList.clear()
+                        topik.soalList.addAll(listSoalBaru)
+                    }
+                    topik.jumlahSoal = topik.soalList.size
+                    topikViewModel.updateTopikLama(topik)
+                    Toast.makeText(requireContext(), "Semua soal berhasil disimpan", Toast.LENGTH_SHORT).show()
+                    findNavController().popBackStack()
                 }
             } else {
-                Toast.makeText(
-                    requireContext(),
-                    "Lengkapi semua isian terlebih dahulu",
-                    Toast.LENGTH_SHORT
-                ).show()
+                Toast.makeText(requireContext(), "Lengkapi semua isian terlebih dahulu", Toast.LENGTH_SHORT).show()
             }
         }
 
         btnKembali.setOnClickListener {
             if (indeksSoal > 1) {
                 if (validInput()) {
-                    if (indeksSoal <= listSoal.size) {
-                        listSoal[indeksSoal - 1] = buatSoal()
+                    if (indeksSoal <= listSoalBaru.size) {
+                        listSoalBaru[indeksSoal - 1] = buatSoal()
                     } else {
-                        listSoal.add(buatSoal())
+                        listSoalBaru.add(buatSoal())
                     }
                 }
                 indeksSoal--
-                isiFormJikaAda()
                 updateJudulSoal()
+                isiFormJikaAda()
             } else {
                 AlertDialog.Builder(requireContext())
-                    .setTitle("Batal buat soal?")
-                    .setMessage("Kalau kamu kembali sekarang, data soal bisa hilang. Yakin?")
+                    .setTitle("Batalkan?")
+                    .setMessage("Soal belum disimpan. Yakin ingin kembali?")
                     .setPositiveButton("Ya") { _, _ ->
                         findNavController().popBackStack()
                     }
@@ -139,7 +142,8 @@ class BuatSoalFragment : Fragment() {
     }
 
     private fun updateJudulSoal() {
-        tvSoalKe.text = "SOAL $indeksSoal"
+        tvSoalKe.text = "Soal $indeksSoal dari $jumlahSoal"
+        btnSimpan.text = if (indeksSoal == jumlahSoal) "Simpan Semua" else "Soal Berikut"
     }
 
     private fun validInput(): Boolean {
@@ -193,8 +197,8 @@ class BuatSoalFragment : Fragment() {
     }
 
     private fun isiFormJikaAda() {
-        if (indeksSoal <= listSoal.size) {
-            isiFormDariSoal(listSoal[indeksSoal - 1])
+        if (indeksSoal <= listSoalBaru.size) {
+            isiFormDariSoal(listSoalBaru[indeksSoal - 1])
         } else {
             resetForm()
         }

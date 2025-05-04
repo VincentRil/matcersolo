@@ -10,6 +10,7 @@ import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.example.matematika_cer.R
+import com.example.matematika_cer.model.TopikModel
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -31,14 +32,14 @@ class BankSoalFragment : Fragment() {
         tabDots = view.findViewById(R.id.tabDotsbanksoal)
         edtCari = view.findViewById(R.id.edtCari)
 
-        // 🔰 Dummy data topik
+        // 🔰 Dummy data topik (sudah sesuai dengan TopikModel terbaru)
         semuaTopik = listOf(
-            TopikModel("Deret bilangan", "30 menit", 15, "25 Maret 2025", isAktif = true),
-            TopikModel("Operasi Hitung", "20 menit", 10, "24 Maret 2025", isAktif = false),
-            TopikModel("Pecahan", "25 menit", 12, "22 Maret 2025", isAktif = false),
-            TopikModel("Bangun Datar", "35 menit", 20, "21 Maret 2025", isAktif = true),
-            TopikModel("Kelipatan & Faktor", "40 menit", 25, "20 Maret 2025", isAktif = false),
-            TopikModel("Volume Bangun", "45 menit", 30, "19 Maret 2025", isAktif = true)
+            TopikModel("Deret bilangan", "Topik tentang pola bilangan", "30 menit", 15, "25 Maret 2025", isAktif = true),
+            TopikModel("Operasi Hitung", "Penjumlahan, pengurangan, dst", "20 menit", 10, "24 Maret 2025", isAktif = false),
+            TopikModel("Pecahan", "Konsep dan operasi pecahan", "25 menit", 12, "22 Maret 2025", isAktif = false),
+            TopikModel("Bangun Datar", "Sifat dan jenis bangun datar", "35 menit", 20, "21 Maret 2025", isAktif = true),
+            TopikModel("Kelipatan & Faktor", "Menentukan KPK dan FPB", "40 menit", 20, "20 Maret 2025", isAktif = false),
+            TopikModel("Volume Bangun", "Menghitung volume bangun ruang", "45 menit", 20, "19 Maret 2025", isAktif = true)
         )
 
         // ⬇️ Tampilkan semua saat awal

@@ -5,6 +5,12 @@ import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.example.matematika_cer.R
+import com.example.matematika_cer.model.User
+import com.example.matematika_cer.network.ApiClient
+import com.example.matematika_cer.network.UserApi
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class LoginActivity : AppCompatActivity() {
 
@@ -18,62 +24,73 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        // Inisialisasi view
         inputNama = findViewById(R.id.inputname)
         inputPassword = findViewById(R.id.inputPassword)
         spinnerKelas = findViewById(R.id.kelas)
         btnLogin = findViewById(R.id.tombol_login)
         btnRegis = findViewById(R.id.tombol_regis)
 
-        val prefs = getSharedPreferences("user_data", MODE_PRIVATE)
-
         btnLogin.setOnClickListener {
-            val nama = inputNama.text.toString().trim()
+            val username = inputNama.text.toString().trim()
             val password = inputPassword.text.toString().trim()
-            val kelas = spinnerKelas.selectedItem.toString()
+            val selectedKelas = spinnerKelas.selectedItem.toString().trim()
 
-            if (nama.isEmpty() || password.isEmpty()) {
+            if (username.isEmpty() || password.isEmpty()) {
                 Toast.makeText(this, "Nama dan kata sandi harus diisi", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            if (kelas == "Pilih kelas") {
-                Toast.makeText(this, "Pilih kelas terlebih dahulu", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
+            val user = User(
+                namaLengkap = null,
+                username = username,
+                password = password,
+                role = null,
+                kelas = selectedKelas
+            )
 
-            val storedPassword = prefs.getString("${nama}_password", null)
-            val storedRole = prefs.getString("${nama}_role", null)
-            val storedKelas = prefs.getString("${nama}_kelas", null)
+            val userApi = ApiClient.instance.create(UserApi::class.java)
+            userApi.login(user).enqueue(object : Callback<User> {
+                override fun onResponse(call: Call<User>, response: Response<User>) {
+                    if (response.isSuccessful) {
+                        val userData = response.body()
 
-            if (storedPassword == null || storedRole == null) {
-                Toast.makeText(this, "Akun tidak ditemukan.", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
+                        if (userData != null) {
+                            val role = userData.role ?: ""
+                            val namaLengkap = userData.namaLengkap ?: ""
+                            val kelasAsli = userData.kelas?.trim() ?: ""
 
-            val isGuru = storedRole == "guru"
-            val isSiswa = storedRole == "siswa"
+                            // ✅ Validasi kelas WAJIB cocok untuk semua role
+                            if (kelasAsli != selectedKelas) {
+                                Toast.makeText(this@LoginActivity, "Kelas yang dipilih tidak sesuai", Toast.LENGTH_SHORT).show()
+                                return
+                            }
 
-            if (password != storedPassword) {
-                Toast.makeText(this, "Kata sandi salah", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
+                            // Lanjut login
+                            val intent = Intent(this@LoginActivity, MainActivity::class.java).apply {
+                                putExtra("nama", namaLengkap)
+                                putExtra("role", role)
+                                putExtra("kelas", kelasAsli)
+                            }
 
-            if (isSiswa && storedKelas != kelas) {
-                Toast.makeText(this, "Kelas tidak cocok", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
+                            Toast.makeText(
+                                this@LoginActivity,
+                                "Login berhasil sebagai ${role.capitalize()}",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                            startActivity(intent)
+                            finish()
+                        } else {
+                            Toast.makeText(this@LoginActivity, "Data kosong dari server", Toast.LENGTH_SHORT).show()
+                        }
+                    } else {
+                        Toast.makeText(this@LoginActivity, "Username atau password salah", Toast.LENGTH_SHORT).show()
+                    }
+                }
 
-            // Login berhasil
-            val intent = Intent(this, MainActivity::class.java).apply {
-                putExtra("nama", nama)
-                putExtra("role", storedRole)
-                if (isSiswa) putExtra("kelas", kelas)
-            }
-
-            Toast.makeText(this, "Login berhasil sebagai ${storedRole.capitalize()}", Toast.LENGTH_SHORT).show()
-            startActivity(intent)
-            finish()
+                override fun onFailure(call: Call<User>, t: Throwable) {
+                    Toast.makeText(this@LoginActivity, "Gagal koneksi: ${t.message}", Toast.LENGTH_SHORT).show()
+                }
+            })
         }
 
         btnRegis.setOnClickListener {

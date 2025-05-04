@@ -118,51 +118,30 @@
             android:background="@drawable/bginput"/>
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- RadioGroup Guru / Siswa -->
-    <RadioGroup
-        android:id="@+id/radiogrupRegis"
+    <!-- Spinner Pilih Role -->
+    <Spinner
+        android:id="@+id/spinnerRole"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/bginput"
+        android:entries="@array/roles"
+        android:theme="@style/SpinnerThemeOverlay"
         app:layout_constraintTop_toBottomOf="@id/katasandiRegislay"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="20dp">
+        app:layout_constraintEnd_toEndOf="parent" />
 
-        <RadioButton
-            android:buttonTint="@color/black"
-            android:id="@+id/RegisGuru"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="daftar sebagai guru"
-            android:textColor="@color/birutua"
-            android:checked="true"/>
-
-        <Space
-            android:layout_width="10dp"
-            android:layout_height="0dp"/>
-
-        <androidx.appcompat.widget.AppCompatRadioButton
-            android:buttonTint="@color/black"
-            android:id="@+id/RegisSiswa"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="daftar sebagai siswa"
-            android:textColor="@color/birutua"/>
-    </RadioGroup>
-
-    <!-- Input Kode Akses (hanya untuk guru) -->
+    <!-- Input Kode Akses (wajib jika guru) -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/inputKodeRegis"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/bginput"
         android:textColorHint="@color/birutua"
-        app:layout_constraintTop_toBottomOf="@id/radiogrupRegis"
+        app:layout_constraintTop_toBottomOf="@id/spinnerRole"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="20dp"
-        android:visibility="visible">
+        android:layout_marginTop="20dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/kodeRegis"
@@ -174,6 +153,7 @@
             android:textColorHint="@color/birutua"
             android:background="@drawable/bginput"/>
     </com.google.android.material.textfield.TextInputLayout>
+
 
     <!-- Tombol Daftar -->
     <androidx.appcompat.widget.AppCompatButton

@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.example.matematika_cer.R
+import com.example.matematika_cer.model.TopikModel
 
 class TopikItemFragment : Fragment() {
 

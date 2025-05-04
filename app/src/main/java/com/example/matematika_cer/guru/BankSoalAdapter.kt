@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.matematika_cer.R
+import com.example.matematika_cer.model.TopikModel
 
 class BankSoalAdapter(
     private var listTopik: List<TopikModel>

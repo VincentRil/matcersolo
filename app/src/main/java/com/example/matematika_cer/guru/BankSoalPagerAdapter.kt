@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.matematika_cer.R
+import com.example.matematika_cer.model.TopikModel
 
 class BankSoalPagerAdapter(
     private val pages: List<List<TopikModel>>

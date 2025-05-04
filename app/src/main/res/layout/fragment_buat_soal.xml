@@ -122,7 +122,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-
                     android:layout_marginBottom="16dp">
 
                     <RadioButton
@@ -141,12 +140,10 @@
                         android:textColor="@color/black"
                         android:buttonTint="@color/radio_button_selector" />
 
-
                     <RadioButton
                         android:id="@+id/rbC"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-
                         android:text="Jawaban C"
                         android:buttonTint="@color/radio_button_selector"
                         android:textColor="@color/black" />
@@ -155,7 +152,6 @@
                         android:id="@+id/rbD"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-
                         android:text="Jawaban D"
                         android:buttonTint="@color/radio_button_selector"
                         android:textColor="@color/black" />
@@ -173,7 +169,6 @@
                     android:layout_marginBottom="8dp">
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etA"
-
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@color/black" />
@@ -226,7 +221,6 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/black" />
                 </com.google.android.material.textfield.TextInputLayout>
-
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
@@ -237,23 +231,23 @@
             android:orientation="horizontal"
             android:gravity="center">
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnKembali"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:text="Kembali"
-                android:backgroundTint="@color/text"
+                android:background="@drawable/regis_selector"
                 android:textColor="@android:color/black"
                 android:layout_marginEnd="8dp" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnSoalBerikut"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:text="Soal Berikut"
-                android:backgroundTint="@color/birutopik"
+                android:background="@drawable/login_selector"
                 android:textColor="@android:color/white" />
         </LinearLayout>
     </LinearLayout>

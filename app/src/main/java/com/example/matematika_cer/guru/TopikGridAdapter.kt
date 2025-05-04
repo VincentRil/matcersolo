@@ -4,35 +4,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.matematika_cer.R
 import com.example.matematika_cer.model.TopikModel
 
-class TopikListAdapter(
-    private var list: List<TopikModel>,
-    private val onItemClick: (TopikModel) -> Unit,
-    private val onItemLongClick: (TopikModel) -> Unit
-) : RecyclerView.Adapter<TopikListAdapter.TopikViewHolder>() {
+class TopikGridAdapter(
+    private val list: List<TopikModel>,
+    private val onItemClick: (TopikModel) -> Unit
+) : RecyclerView.Adapter<TopikGridAdapter.TopikViewHolder>() {
 
     inner class TopikViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val cardView: CardView = itemView.findViewById(R.id.card_topik)
         val nama: TextView = itemView.findViewById(R.id.nama_topik)
         val durasi: TextView = itemView.findViewById(R.id.durasi)
-        val total: TextView = itemView.findViewById(R.id.total_soal)
+        val totalSoal: TextView = itemView.findViewById(R.id.total_soal)
         val peserta: TextView = itemView.findViewById(R.id.peserta)
         val tanggal: TextView = itemView.findViewById(R.id.tanggal)
-
-        init {
-            itemView.setOnClickListener {
-                val topik = list[adapterPosition]
-                onItemClick(topik)
-            }
-
-            itemView.setOnLongClickListener {
-                val topik = list[adapterPosition]
-                onItemLongClick(topik)
-                true
-            }
-        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TopikViewHolder {
@@ -45,15 +33,14 @@ class TopikListAdapter(
         val topik = list[position]
         holder.nama.text = topik.namaTopik
         holder.durasi.text = "Durasi: ${topik.durasi}"
-        holder.total.text = "Jumlah soal: ${topik.jumlahSoal}" // ✅ selalu ambil data terbaru
-        holder.peserta.text = "${topik.jumlahMenjawab}/${topik.totalPeserta}"
+        holder.totalSoal.text = "Jumlah soal: ${topik.jumlahSoal}"
+        holder.peserta.text = "${topik.jumlahMenjawab ?: 0}/${topik.totalPeserta ?: 0}"
         holder.tanggal.text = "Tanggal: ${topik.tanggal}"
+
+        holder.cardView.setOnClickListener {
+            onItemClick(topik)
+        }
     }
 
     override fun getItemCount(): Int = list.size
-
-    fun updateData(newList: List<TopikModel>) {
-        list = newList
-        notifyDataSetChanged()
-    }
 }
