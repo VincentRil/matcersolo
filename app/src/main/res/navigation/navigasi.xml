@@ -38,14 +38,7 @@
         android:name="com.example.matematika_cer.siswa.RiwayatKuisFragment"
         android:label="Riwayat Kuis" />
 
-    <fragment
-        android:id="@+id/nilaisiswaFragment"
-        android:name="com.example.matematika_cer.siswa.NilaiSiswaFragment"
-        android:label="Nilai Siswa">
-        <action
-            android:id="@+id/action_nilaiSiswa_to_detailNilaiSiswa"
-            app:destination="@id/detailNilaiSiswaFragment" />
-    </fragment>
+
 
     <!-- Fragment untuk Role Guru -->
     <fragment
@@ -61,9 +54,6 @@
         <action
             android:id="@+id/action_beranda_to_tambahTopik"
             app:destination="@id/tambahTopikSoalFragment" />
-        <action
-            android:id="@+id/action_beranda_to_editTopik"
-            app:destination="@id/editTopikSoalFragment" />
     </fragment>
 
     <fragment
@@ -85,14 +75,6 @@
             app:destination="@id/buatSoalFragment" />
     </fragment>
 
-    <fragment
-        android:id="@+id/editTopikSoalFragment"
-        android:name="com.example.matematika_cer.guru.EditTopikdanSoalFragment"
-        android:label="Edit Topik dan Soal">
-        <action
-            android:id="@+id/action_editTopikdanSoalFragment_to_detailEditSoalFragment"
-            app:destination="@id/detailEditSoalFragment" />
-    </fragment>
 
     <fragment
         android:id="@+id/buatSoalFragment"
@@ -103,18 +85,5 @@
             app:destination="@id/daftarTopikFragment" />
     </fragment>
 
-    <fragment
-        android:id="@+id/detailEditSoalFragment"
-        android:name="com.example.matematika_cer.guru.DetailEditSoalFragment"
-        android:label="Edit Soal">
-        <!-- ✅ Tambahkan navigasi ke BuatSoalFragment -->
-        <action
-            android:id="@+id/action_detailEditSoalFragment_to_buatSoalFragment"
-            app:destination="@id/buatSoalFragment" />
-    </fragment>
 
-    <fragment
-        android:id="@+id/detailNilaiSiswaFragment"
-        android:name="com.example.matematika_cer.guru.DetailNilaiSiswaFragment"
-        android:label="Detail Nilai Siswa" />
 </navigation>

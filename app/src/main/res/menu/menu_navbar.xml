@@ -9,8 +9,4 @@
         android:id="@+id/daftar_siswa_navbar"
         android:title="Daftar Siswa"
         android:icon="@drawable/ic_daftar_siswa"/>
-    <item
-        android:id="@+id/nilai_siswa_navbar"
-        android:title="Nilai Siswa"
-        android:icon="@drawable/ic_nilai_siswa"/>
 </menu>

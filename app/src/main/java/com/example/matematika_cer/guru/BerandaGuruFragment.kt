@@ -36,8 +36,7 @@ class BerandaGuruFragment : Fragment() {
 
         val daftarTopik = view.findViewById<CardView>(R.id.daftar_topik)
         val bankSoal = view.findViewById<CardView>(R.id.bank_soal)
-        val buatTopik = view.findViewById<CardView>(R.id.buat_topikdansoal)
-        val editTopik = view.findViewById<CardView>(R.id.edit_topikdansoal)
+        val pengaturanTopik = view.findViewById<CardView>(R.id.pengaturantopik)
         val logoutBtn = view.findViewById<View>(R.id.logoutbtn)
 
         daftarTopik.setOnClickListener {
@@ -45,12 +44,6 @@ class BerandaGuruFragment : Fragment() {
         }
         bankSoal.setOnClickListener {
             findNavController().navigate(R.id.action_beranda_to_bankSoal)
-        }
-        buatTopik.setOnClickListener {
-            findNavController().navigate(R.id.action_beranda_to_tambahTopik)
-        }
-        editTopik.setOnClickListener {
-            findNavController().navigate(R.id.action_beranda_to_editTopik)
         }
 
         logoutBtn.setOnClickListener {

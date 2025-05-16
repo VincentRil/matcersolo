@@ -61,10 +61,6 @@ class MainActivity : AppCompatActivity() {
                     navController.navigate(R.id.daftarsiswaFragment)
                     true
                 }
-                R.id.nilai_siswa_navbar -> {
-                    navController.navigate(R.id.nilaisiswaFragment)
-                    true
-                }
                 // Menu siswa
                 R.id.beranda_siswa_navbar -> {
                     navController.navigate(R.id.berandaSiswaFragment)

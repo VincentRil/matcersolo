@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="90dp"
+    android:layout_height="wrap_content"
     android:layout_marginBottom="12dp"
     app:cardCornerRadius="16dp"
     app:cardElevation="4dp"
@@ -13,20 +13,21 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+        android:baselineAligned="false">
 
-        <!-- Kiri: Info Soal -->
+        <!-- Kolom kiri: informasi topik -->
         <LinearLayout
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:orientation="vertical"
-            android:layout_height="wrap_content">
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/tvTopik"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Deret bilangan"
+                android:text="Nama Topik"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:textColor="@color/black" />
@@ -35,7 +36,7 @@
                 android:id="@+id/tvDurasi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Durasi: 30 menit"
+                android:text="Durasi: ..."
                 android:textSize="14sp"
                 android:textColor="@color/black" />
 
@@ -43,56 +44,48 @@
                 android:id="@+id/tvJumlahSoal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Jumlah soal: 15"
+                android:text="Jumlah soal: ..."
                 android:textSize="14sp"
                 android:textColor="@color/black" />
         </LinearLayout>
 
-        <!-- Kanan: Tindakan -->
+        <!-- Kolom kanan: tindakan dan tanggal -->
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical"
             android:gravity="end">
 
-            <!-- Icon & Label -->
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:layout_marginBottom="6dp">
 
-                <LinearLayout
+                <ImageView
+                    android:id="@+id/btnKirimTopik"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_upload"
+                    android:contentDescription="Tambah/Kirim" />
+
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:gravity="center_horizontal"
-                    android:layout_marginEnd="16dp">
-
-                    <ImageView
-                        android:id="@+id/btnKirimTopik"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:src="@drawable/ic_upload"
-                        android:contentDescription="Kirim" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Kirim"
-                        android:textSize="12sp"
-                        android:textColor="@color/black"
-                        android:layout_marginTop="4dp" />
-                </LinearLayout>
+                    android:text="Tambah"
+                    android:textSize="12sp"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="4dp" />
             </LinearLayout>
 
             <TextView
                 android:id="@+id/tvTanggal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tanggal : 25 Maret 2025"
+                android:text="Tanggal: ..."
                 android:textSize="12sp"
-                android:textColor="@color/black"
-                android:layout_marginTop="6dp" />
+                android:textColor="@color/black" />
         </LinearLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

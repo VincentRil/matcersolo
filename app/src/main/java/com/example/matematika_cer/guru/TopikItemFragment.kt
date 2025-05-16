@@ -39,10 +39,5 @@ class TopikItemFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         view.findViewById<TextView>(R.id.nama_topik).text = topik?.namaTopik
-        view.findViewById<TextView>(R.id.durasi).text = "Durasi: ${topik?.durasi}"
-        view.findViewById<TextView>(R.id.total_soal).text = "Jumlah soal: ${topik?.jumlahSoal}"
-        view.findViewById<TextView>(R.id.peserta).text =
-            "👥 ${topik?.jumlahMenjawab}/${topik?.totalPeserta} Siswa"
-        view.findViewById<TextView>(R.id.tanggal).text = "Tanggal: ${topik?.tanggal}"
     }
 }

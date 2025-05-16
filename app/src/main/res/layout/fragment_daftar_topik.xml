@@ -90,6 +90,16 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/tambahTopikBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/login_selector"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="tambah topik"
+        android:layout_marginBottom="30dp"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

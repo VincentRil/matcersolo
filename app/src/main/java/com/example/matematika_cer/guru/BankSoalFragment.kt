@@ -8,9 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.viewpager2.widget.ViewPager2
 import com.example.matematika_cer.R
 import com.example.matematika_cer.model.TopikModel
+import com.example.matematika_cer.viewmodel.SharedTopikViewModel
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -19,8 +21,9 @@ class BankSoalFragment : Fragment() {
     private lateinit var viewPager: ViewPager2
     private lateinit var tabDots: TabLayout
     private lateinit var edtCari: EditText
+    private lateinit var pagerAdapter: BankSoalPagerAdapter
 
-    private lateinit var semuaTopik: List<TopikModel>
+    private val topikViewModel: SharedTopikViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,26 +35,21 @@ class BankSoalFragment : Fragment() {
         tabDots = view.findViewById(R.id.tabDotsbanksoal)
         edtCari = view.findViewById(R.id.edtCari)
 
-        // 🔰 Dummy data topik (sudah sesuai dengan TopikModel terbaru)
-        semuaTopik = listOf(
-            TopikModel("Deret bilangan", "Topik tentang pola bilangan", "30 menit", 15, "25 Maret 2025", isAktif = true),
-            TopikModel("Operasi Hitung", "Penjumlahan, pengurangan, dst", "20 menit", 10, "24 Maret 2025", isAktif = false),
-            TopikModel("Pecahan", "Konsep dan operasi pecahan", "25 menit", 12, "22 Maret 2025", isAktif = false),
-            TopikModel("Bangun Datar", "Sifat dan jenis bangun datar", "35 menit", 20, "21 Maret 2025", isAktif = true),
-            TopikModel("Kelipatan & Faktor", "Menentukan KPK dan FPB", "40 menit", 20, "20 Maret 2025", isAktif = false),
-            TopikModel("Volume Bangun", "Menghitung volume bangun ruang", "45 menit", 20, "19 Maret 2025", isAktif = true)
-        )
+        // Adapter inisialisasi
+        pagerAdapter = BankSoalPagerAdapter(emptyList())
+        viewPager.adapter = pagerAdapter
+        TabLayoutMediator(tabDots, viewPager) { _, _ -> }.attach()
 
-        // ⬇️ Tampilkan semua saat awal
-        tampilkanTopikKeViewPager(semuaTopik)
+        // Tampilkan topik awal
+        refreshTopik(topikViewModel.daftarTopikSementara)
 
-        // 🔍 Fitur Search
+        // 🔍 Pencarian
         edtCari.addTextChangedListener(object : TextWatcher {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                val hasilFilter = semuaTopik.filter {
+                val hasil = topikViewModel.daftarTopikSementara.filter {
                     it.namaTopik.contains(s.toString(), ignoreCase = true)
                 }
-                tampilkanTopikKeViewPager(hasilFilter)
+                refreshTopik(hasil)
             }
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
@@ -61,11 +59,8 @@ class BankSoalFragment : Fragment() {
         return view
     }
 
-    // ✅ Fungsi bantu untuk isi ViewPager2
-    private fun tampilkanTopikKeViewPager(dataTopik: List<TopikModel>) {
-        val halamanTopik = dataTopik.chunked(3)
-        val pagerAdapter = BankSoalPagerAdapter(halamanTopik)
-        viewPager.adapter = pagerAdapter
-        TabLayoutMediator(tabDots, viewPager) { _, _ -> }.attach()
+    private fun refreshTopik(list: List<TopikModel>) {
+        val grouped = list.chunked(3)
+        pagerAdapter.submitData(grouped)
     }
 }
