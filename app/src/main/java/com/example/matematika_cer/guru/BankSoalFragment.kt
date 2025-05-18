@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.example.matematika_cer.R
 import com.example.matematika_cer.model.TopikModel
@@ -35,15 +36,21 @@ class BankSoalFragment : Fragment() {
         tabDots = view.findViewById(R.id.tabDotsbanksoal)
         edtCari = view.findViewById(R.id.edtCari)
 
-        // Adapter inisialisasi
-        pagerAdapter = BankSoalPagerAdapter(emptyList())
+        // Adapter inisialisasi dengan onTopikClick langsung navigate
+        pagerAdapter = BankSoalPagerAdapter(emptyList()) { topik ->
+            val bundle = Bundle().apply {
+                putParcelable("topik", topik)
+            }
+            findNavController().navigate(R.id.action_bankSoalFragment_to_daftarSoalFragment, bundle)
+        }
+
         viewPager.adapter = pagerAdapter
         TabLayoutMediator(tabDots, viewPager) { _, _ -> }.attach()
 
         // Tampilkan topik awal
         refreshTopik(topikViewModel.daftarTopikSementara)
 
-        // 🔍 Pencarian
+        // 🔍 Fitur pencarian
         edtCari.addTextChangedListener(object : TextWatcher {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 val hasil = topikViewModel.daftarTopikSementara.filter {

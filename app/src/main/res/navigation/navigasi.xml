@@ -38,8 +38,6 @@
         android:name="com.example.matematika_cer.siswa.RiwayatKuisFragment"
         android:label="Riwayat Kuis" />
 
-
-
     <!-- Fragment untuk Role Guru -->
     <fragment
         android:id="@+id/berandaGuruFragment"
@@ -51,9 +49,7 @@
         <action
             android:id="@+id/action_beranda_to_bankSoal"
             app:destination="@id/bankSoalFragment" />
-        <action
-            android:id="@+id/action_beranda_to_tambahTopik"
-            app:destination="@id/tambahTopikSoalFragment" />
+        
     </fragment>
 
     <fragment
@@ -64,15 +60,10 @@
     <fragment
         android:id="@+id/bankSoalFragment"
         android:name="com.example.matematika_cer.guru.BankSoalFragment"
-        android:label="Bank Soal" />
-
-    <fragment
-        android:id="@+id/tambahTopikSoalFragment"
-        android:name="com.example.matematika_cer.guru.BuatTopikdanSoalFragment"
-        android:label="Tambah Topik dan Soal" >
+        android:label="Bank Soal">
         <action
-            android:id="@+id/action_tambahTopikSoalFragment_to_buatSoalFragment"
-            app:destination="@id/buatSoalFragment" />
+            android:id="@+id/action_bankSoalFragment_to_daftarSoalFragment"
+            app:destination="@id/daftarSoalFragment" />
     </fragment>
 
 
@@ -85,5 +76,9 @@
             app:destination="@id/daftarTopikFragment" />
     </fragment>
 
-
+    <!-- ✅ Fragment baru untuk daftar soal -->
+    <fragment
+        android:id="@+id/daftarSoalFragment"
+        android:name="com.example.matematika_cer.guru.DaftarSoalFragment"
+        android:label="Daftar Soal" />
 </navigation>

@@ -9,7 +9,8 @@ import com.example.matematika_cer.R
 import com.example.matematika_cer.model.TopikModel
 
 class BankSoalPagerAdapter(
-    private val pages: List<List<TopikModel>>
+    private var pages: List<List<TopikModel>>,
+    private val onTopikClick: (TopikModel) -> Unit
 ) : RecyclerView.Adapter<BankSoalPagerAdapter.PageViewHolder>() {
 
     inner class PageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -25,8 +26,14 @@ class BankSoalPagerAdapter(
     override fun onBindViewHolder(holder: PageViewHolder, position: Int) {
         val topikDalamHalaman = pages[position]
         holder.recyclerView.layoutManager = LinearLayoutManager(holder.itemView.context)
-        holder.recyclerView.adapter = BankSoalAdapter(topikDalamHalaman)
+        holder.recyclerView.adapter = BankSoalAdapter(topikDalamHalaman, onTopikClick)
     }
 
     override fun getItemCount(): Int = pages.size
+
+    // ✅ Fungsi ini penting untuk mengupdate data ViewPager
+    fun submitData(newPages: List<List<TopikModel>>) {
+        pages = newPages
+        notifyDataSetChanged()
+    }
 }
