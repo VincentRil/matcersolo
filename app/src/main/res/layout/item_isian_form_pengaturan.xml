@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/containerIsianForm"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Nama Topik -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="12dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Nama Topik" />
+
+        <TextView
+            android:id="@+id/tvNamaTopikPengaturan"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:minHeight="48dp"
+            android:paddingVertical="8dp"
+            android:background="@drawable/bg_isian_tes_pengaturan"
+            android:text="-" />
+    </LinearLayout>
+
+    <!-- Jumlah Soal -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="12dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Jumlah Soal" />
+
+        <EditText
+            android:id="@+id/etJumlahSoalPengaturan"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:minHeight="48dp"
+            android:paddingVertical="8dp"
+            android:background="@drawable/bg_isian_tes_pengaturan"
+            android:inputType="number"
+            android:hint="Masukkan jumlah soal" />
+    </LinearLayout>
+
+    <!-- Nama Pembuat -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="12dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Nama Pembuat" />
+
+        <EditText
+            android:id="@+id/etNamaPembuatPengaturan"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:minHeight="48dp"
+            android:paddingVertical="8dp"
+            android:background="@drawable/bg_isian_tes_pengaturan"
+            android:inputType="textPersonName"
+            android:hint="Masukkan nama Anda" />
+    </LinearLayout>
+
+    <!-- Tanggal Pelaksanaan -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="12dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Tanggal pelaksanaan" />
+
+        <EditText
+            android:id="@+id/etTanggalPengaturan"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:minHeight="48dp"
+            android:inputType="date"
+            android:paddingVertical="8dp"
+            android:background="@drawable/bg_isian_tes_pengaturan"
+            android:focusable="false"
+            android:clickable="true"
+            android:hint="Pilih tanggal" />
+    </LinearLayout>
+
+    <!-- Jam Pelaksanaan -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="12dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Jam pelaksanaan" />
+
+        <EditText
+            android:id="@+id/etJamPengaturan"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:minHeight="48dp"
+            android:inputType="time"
+            android:paddingVertical="8dp"
+            android:background="@drawable/bg_isian_tes_pengaturan"
+            android:focusable="false"
+            android:clickable="true"
+            android:hint="Pilih jam" />
+    </LinearLayout>
+
+    <!-- Durasi -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="12dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Durasi (menit)" />
+
+        <EditText
+            android:id="@+id/etDurasiPengaturan"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:minHeight="48dp"
+            android:paddingVertical="8dp"
+            android:background="@drawable/bg_isian_tes_pengaturan"
+            android:inputType="number"
+            android:hint="Masukkan durasi" />
+    </LinearLayout>
+
+    <!-- Nilai per Soal -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="12dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Nilai per soal" />
+
+        <EditText
+            android:id="@+id/etNilaiSoalPengaturan"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:minHeight="48dp"
+            android:paddingVertical="8dp"
+            android:background="@drawable/bg_isian_tes_pengaturan"
+            android:inputType="numberDecimal"
+            android:hint="Masukkan nilai per soal" />
+    </LinearLayout>
+
+    <!-- Soal Acak -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Soal acak" />
+
+        <CheckBox
+            android:id="@+id/cbSoalAcakPengaturan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>

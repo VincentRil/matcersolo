@@ -1,60 +1,129 @@
 package com.example.matematika_cer.guru
 
+import android.app.DatePickerDialog
+import android.app.TimePickerDialog
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.*
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import com.example.matematika_cer.R
+import com.example.matematika_cer.model.TopikModel
+import com.example.matematika_cer.viewmodel.SharedTopikViewModel
+import java.util.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [PengaturanTopikFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class PengaturanTopikFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private val topikViewModel: SharedTopikViewModel by activityViewModels()
+
+    private lateinit var spinner: Spinner
+    private lateinit var tvNamaTopik: TextView
+    private lateinit var etJumlahSoal: EditText
+    private lateinit var etNamaPembuat: EditText
+    private lateinit var etTanggal: EditText
+    private lateinit var etJam: EditText
+    private lateinit var etDurasi: EditText
+    private lateinit var etNilaiPerSoal: EditText
+    private lateinit var cbSoalAcak: CheckBox
+    private lateinit var tombolKirim: Button
+
+    private var topikDipilih: TopikModel? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_pengaturan_topik, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment PengaturanTopikFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            PengaturanTopikFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        spinner = view.findViewById(R.id.spinnerPengaturan)
+        tvNamaTopik = view.findViewById(R.id.tvNamaTopikPengaturan)
+        etJumlahSoal = view.findViewById(R.id.etJumlahSoalPengaturan)
+        etNamaPembuat = view.findViewById(R.id.etNamaPembuatPengaturan)
+        etTanggal = view.findViewById(R.id.etTanggalPengaturan)
+        etJam = view.findViewById(R.id.etJamPengaturan)
+        etDurasi = view.findViewById(R.id.etDurasiPengaturan)
+        etNilaiPerSoal = view.findViewById(R.id.etNilaiSoalPengaturan)
+        cbSoalAcak = view.findViewById(R.id.cbSoalAcakPengaturan)
+        tombolKirim = view.findViewById(R.id.tombol_kirim)
+
+        setupTanggalDanJamPicker()
+
+        val daftarTopik = topikViewModel.daftarTopikSementara
+
+        if (daftarTopik.isEmpty()) {
+            Toast.makeText(requireContext(), "Belum ada topik dibuat", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val namaTopikList = daftarTopik.map { it.namaTopik }
+        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, namaTopikList)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinner.adapter = adapter
+
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
+                topikDipilih = daftarTopik[position]
+                tampilkanDataTopik(topikDipilih!!)
             }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {}
+        }
+
+        tombolKirim.setOnClickListener {
+            if (topikDipilih != null) {
+                val durasi = etDurasi.text.toString()
+                val pembuat = etNamaPembuat.text.toString()
+                val tanggal = etTanggal.text.toString()
+                val jam = etJam.text.toString()
+                val acak = cbSoalAcak.isChecked
+
+                Toast.makeText(requireContext(), "Pengaturan disiapkan untuk topik ${topikDipilih!!.namaTopik}", Toast.LENGTH_SHORT).show()
+
+                // TODO: Simpan data ke backend atau update ViewModel
+            }
+        }
+    }
+
+    private fun setupTanggalDanJamPicker() {
+        val calendar = Calendar.getInstance()
+
+        etTanggal.setOnClickListener {
+            DatePickerDialog(requireContext(), { _, year, month, dayOfMonth ->
+                val tanggal = String.format("%02d-%02d-%d", dayOfMonth, month + 1, year)
+                etTanggal.setText(tanggal)
+            },
+                calendar.get(Calendar.YEAR),
+                calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.DAY_OF_MONTH)
+            ).show()
+        }
+
+        etJam.setOnClickListener {
+            TimePickerDialog(requireContext(), { _, hourOfDay, minute ->
+                val jam = String.format("%02d:%02d", hourOfDay, minute)
+                etJam.setText(jam)
+            },
+                calendar.get(Calendar.HOUR_OF_DAY),
+                calendar.get(Calendar.MINUTE),
+                true
+            ).show()
+        }
+    }
+
+    private fun tampilkanDataTopik(topik: TopikModel) {
+        tvNamaTopik.text = topik.namaTopik
+        etJumlahSoal.setText(topik.jumlahSoal.toString())
+        etDurasi.setText(topik.durasi.filter { it.isDigit() })
+        etNamaPembuat.setText("")
+        etTanggal.setText("")
+        etJam.setText("")
+        etNilaiPerSoal.setText("")
+        cbSoalAcak.isChecked = false
     }
 }

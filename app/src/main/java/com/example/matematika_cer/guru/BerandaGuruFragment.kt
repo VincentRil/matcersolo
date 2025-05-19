@@ -45,6 +45,9 @@ class BerandaGuruFragment : Fragment() {
         bankSoal.setOnClickListener {
             findNavController().navigate(R.id.action_beranda_to_bankSoal)
         }
+        pengaturanTopik.setOnClickListener {
+            findNavController().navigate(R.id.action_beranda_to_pengaturanTopik)
+        }
 
         logoutBtn.setOnClickListener {
             val builder = AlertDialog.Builder(requireContext())

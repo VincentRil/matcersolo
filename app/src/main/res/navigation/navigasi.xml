@@ -38,6 +38,10 @@
         android:name="com.example.matematika_cer.siswa.RiwayatKuisFragment"
         android:label="Riwayat Kuis" />
 
+    <fragment
+        android:id="@+id/pengaturantopik"
+        android:name="com.example.matematika_cer.guru.PengaturanTopikFragment"
+        android:label="Pengaturan Topik"/>
     <!-- Fragment untuk Role Guru -->
     <fragment
         android:id="@+id/berandaGuruFragment"
@@ -49,6 +53,9 @@
         <action
             android:id="@+id/action_beranda_to_bankSoal"
             app:destination="@id/bankSoalFragment" />
+        <action
+            android:id="@+id/action_beranda_to_pengaturanTopik"
+            app:destination="@id/pengaturantopik"/>
         
     </fragment>
 
