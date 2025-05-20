@@ -71,6 +71,7 @@
         <action
             android:id="@+id/action_bankSoalFragment_to_daftarSoalFragment"
             app:destination="@id/daftarSoalFragment" />
+
     </fragment>
 
 
@@ -87,5 +88,11 @@
     <fragment
         android:id="@+id/daftarSoalFragment"
         android:name="com.example.matematika_cer.guru.DaftarSoalFragment"
-        android:label="Daftar Soal" />
+        android:label="Daftar Soal" >
+
+        <action
+            android:id="@+id/daftarsoal_ke_buatsoal"
+            app:destination="@id/buatSoalFragment"/>
+
+    </fragment>
 </navigation>

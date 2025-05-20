@@ -27,7 +27,8 @@ class SoalPageFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_soal_page, container, false)
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerViewSoalPerHalaman)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        recyclerView.adapter = SoalPageAdapter(soalList)
+        recyclerView.adapter = SoalPageAdapter(soalList) { /* kosongkan */ }
+
         return view
     }
 

@@ -6,6 +6,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class TopikModel(
+    val id: Int,
     var namaTopik: String,
     val deskripsiTopik: String,
     val durasi: String,

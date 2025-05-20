@@ -14,21 +14,15 @@ import retrofit2.Response
 
 class LoginActivity : AppCompatActivity() {
 
-    private lateinit var inputNama: EditText
-    private lateinit var inputPassword: EditText
-    private lateinit var spinnerKelas: Spinner
-    private lateinit var btnLogin: Button
-    private lateinit var btnRegis: Button
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        inputNama = findViewById(R.id.inputname)
-        inputPassword = findViewById(R.id.inputPassword)
-        spinnerKelas = findViewById(R.id.kelas)
-        btnLogin = findViewById(R.id.tombol_login)
-        btnRegis = findViewById(R.id.tombol_regis)
+        val inputNama = findViewById<EditText>(R.id.inputname)
+        val inputPassword = findViewById<EditText>(R.id.inputPassword)
+        val spinnerKelas = findViewById<Spinner>(R.id.kelas)
+        val btnLogin = findViewById<Button>(R.id.tombol_login)
+        val btnRegis = findViewById<Button>(R.id.tombol_regis)
 
         btnLogin.setOnClickListener {
             val username = inputNama.text.toString().trim()
@@ -53,31 +47,29 @@ class LoginActivity : AppCompatActivity() {
                 override fun onResponse(call: Call<User>, response: Response<User>) {
                     if (response.isSuccessful) {
                         val userData = response.body()
-
                         if (userData != null) {
+                            val nama = userData.namaLengkap ?: ""
                             val role = userData.role ?: ""
-                            val namaLengkap = userData.namaLengkap ?: ""
                             val kelasAsli = userData.kelas?.trim() ?: ""
 
-                            // ✅ Validasi kelas WAJIB cocok untuk semua role
                             if (kelasAsli != selectedKelas) {
                                 Toast.makeText(this@LoginActivity, "Kelas yang dipilih tidak sesuai", Toast.LENGTH_SHORT).show()
                                 return
                             }
 
-                            // Lanjut login
-                            val intent = Intent(this@LoginActivity, MainActivity::class.java).apply {
-                                putExtra("nama", namaLengkap)
-                                putExtra("role", role)
-                                putExtra("kelas", kelasAsli)
+                            // ✅ Simpan ke SharedPreferences
+                            val sharedPref = getSharedPreferences("UserSession", MODE_PRIVATE)
+                            sharedPref.edit().apply {
+                                putString("nama", nama)
+                                putString("role", role)
+                                putString("kelas", kelasAsli)
+                                apply()
                             }
 
-                            Toast.makeText(
-                                this@LoginActivity,
-                                "Login berhasil sebagai ${role.capitalize()}",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                            startActivity(intent)
+                            Toast.makeText(this@LoginActivity, "Login berhasil sebagai ${role.capitalize()}", Toast.LENGTH_SHORT).show()
+
+                            // Arahkan ke MainActivity
+                            startActivity(Intent(this@LoginActivity, MainActivity::class.java))
                             finish()
                         } else {
                             Toast.makeText(this@LoginActivity, "Data kosong dari server", Toast.LENGTH_SHORT).show()

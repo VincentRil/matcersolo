@@ -7,6 +7,15 @@
     android:background="@color/white"
     android:padding="16dp">
 
+    <ImageView
+        android:id="@+id/logoutbtnsiswa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_logout"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/nama_siswa"
@@ -15,8 +24,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:text="Halo Sali!"
+        android:layout_marginTop="40dp"
+        android:text=""
         android:textSize="28sp"
         android:textColor="@color/black"
         android:textStyle="bold"/>
@@ -27,12 +36,14 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/nama_siswa"
-        android:text="Kelas 4"
+        android:text=""
         android:layout_marginStart="20dp"
         android:layout_marginTop="5dp"
         android:textStyle="bold"
         android:textColor="@color/black"
         android:textSize="20dp"/>
+
+
 
 
     <androidx.cardview.widget.CardView
@@ -109,7 +120,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp"/>
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

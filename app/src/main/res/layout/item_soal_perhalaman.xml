@@ -6,15 +6,88 @@
     android:layout_marginBottom="12dp"
     app:cardCornerRadius="12dp"
     app:cardElevation="4dp"
-    android:background="@drawable/bg_soal_cardview">
+    android:background="@drawable/bg_soal_cardview"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true"
+    android:padding="12dp">
 
-    <TextView
-        android:id="@+id/teksSoal"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Contoh soal akan muncul di sini"
-        android:textSize="16sp"
-        android:padding="16dp"
-        android:textColor="@android:color/black" />
+        android:layout_height="wrap_content">
 
+        <!-- Tombol Hapus -->
+        <ImageButton
+            android:id="@+id/btnHapusSoal"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentEnd="true"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_delete"
+            android:contentDescription="Hapus Soal" />
+
+        <!-- Konten Soal -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@id/btnHapusSoal"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:id="@+id/teksPertanyaan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Pertanyaan soal"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_marginBottom="8dp"/>
+
+            <TextView
+                android:id="@+id/opsiA"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="A. Pilihan A"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/opsiB"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="B. Pilihan B"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/opsiC"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="C. Pilihan C"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/opsiD"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="D. Pilihan D"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/jawabanBenar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Jawaban Benar: B"
+                android:textStyle="italic"
+                android:textColor="@color/kuningkuis"
+                android:layout_marginTop="8dp" />
+
+            <ImageView
+                android:id="@+id/gambarSoal"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scaleType="fitCenter"
+                android:visibility="gone"
+                android:layout_marginTop="8dp" />
+        </LinearLayout>
+    </RelativeLayout>
 </androidx.cardview.widget.CardView>

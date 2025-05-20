@@ -101,6 +101,7 @@ class DaftarTopikFragment : Fragment() {
                     Toast.makeText(requireContext(), "Topik sudah ada", Toast.LENGTH_SHORT).show()
                 } else {
                     val topikBaru = TopikModel(
+                        id = topikViewModel.generateTopikId(),
                         namaTopik = nama,
                         deskripsiTopik = "",
                         durasi = "0",
@@ -110,6 +111,7 @@ class DaftarTopikFragment : Fragment() {
                         jumlahMenjawab = 0,
                         totalPeserta = 0
                     )
+
                     topikViewModel.tambahTopik(topikBaru)
                     refreshTopik()
                     Toast.makeText(requireContext(), "Topik ditambahkan", Toast.LENGTH_SHORT).show()

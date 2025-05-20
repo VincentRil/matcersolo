@@ -9,6 +9,12 @@ class SharedTopikViewModel : ViewModel() {
     // ⛔ Jangan langsung public, supaya tidak disimpan sebagai referensi luar
     private val _daftarTopikSementara = mutableListOf<TopikModel>()
 
+    // ✅ Fungsi untuk menghasilkan ID topik baru secara otomatis
+    fun generateTopikId(): Int {
+        return (_daftarTopikSementara.maxOfOrNull { it.id } ?: 0) + 1
+    }
+
+
     // ✅ Public hanya salinan (read-only)
     val daftarTopikSementara: List<TopikModel>
         get() = _daftarTopikSementara.toList()
@@ -57,4 +63,6 @@ class SharedTopikViewModel : ViewModel() {
     fun isTopikSudahAda(nama: String): Boolean {
         return _daftarTopikSementara.any { it.namaTopik.equals(nama, ignoreCase = true) }
     }
+
+
 }

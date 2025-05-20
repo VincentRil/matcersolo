@@ -79,9 +79,11 @@ class BuatSoalFragment : Fragment() {
         val mode = arguments?.getString("mode")
         val tambahan = arguments?.getInt("tambahan", 0) ?: 0
 
+        // 🔥 Tambahan logika jumlah soal dari argument
+        val jumlahDariUser = arguments?.getInt("jumlahSoal", 0) ?: 0
         jumlahSoal = when (mode) {
             "EDIT" -> tambahan
-            else -> topik.jumlahSoal
+            else -> if (jumlahDariUser > 0) jumlahDariUser else topik.jumlahSoal
         }
 
         updateJudulSoal()

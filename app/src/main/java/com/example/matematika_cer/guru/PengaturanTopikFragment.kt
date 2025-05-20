@@ -85,7 +85,7 @@ class PengaturanTopikFragment : Fragment() {
 
                 Toast.makeText(requireContext(), "Pengaturan disiapkan untuk topik ${topikDipilih!!.namaTopik}", Toast.LENGTH_SHORT).show()
 
-                // TODO: Simpan data ke backend atau update ViewModel
+
             }
         }
     }
