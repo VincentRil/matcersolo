@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    android:padding="16dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="4dp"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/namaTopikCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nama Topik"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:layout_marginBottom="6dp"/>
+
+        <TextView
+            android:id="@+id/detailJumlahSoal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Jumlah Soal: 10"/>
+
+        <TextView
+            android:id="@+id/detailDurasi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Durasi: 60 menit"/>
+
+        <TextView
+            android:id="@+id/detailTanggalJam"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pelaksanaan: 21 Mei 2025, 09:00"/>
+
+        <TextView
+            android:id="@+id/detailJumlahMenjawab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sudah menjawab: 8 dari 20 siswa"/>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

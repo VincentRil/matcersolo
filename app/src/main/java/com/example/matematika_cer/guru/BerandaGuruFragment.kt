@@ -42,6 +42,7 @@ class BerandaGuruFragment : Fragment() {
         val bankSoal = view.findViewById<CardView>(R.id.bank_soal)
         val pengaturanTopik = view.findViewById<CardView>(R.id.pengaturantopik)
         val logoutBtn = view.findViewById<View>(R.id.logoutbtn)
+        val Nilaisiswa = view.findViewById<CardView>(R.id.Nilai_siswa)
 
         daftarTopik.setOnClickListener {
             findNavController().navigate(R.id.action_beranda_to_daftarTopik)
@@ -53,6 +54,9 @@ class BerandaGuruFragment : Fragment() {
 
         pengaturanTopik.setOnClickListener {
             findNavController().navigate(R.id.action_beranda_to_pengaturanTopik)
+        }
+        Nilaisiswa.setOnClickListener {
+            findNavController().navigate(R.id.actionberanda_to_nilaisiswa)
         }
 
         logoutBtn.setOnClickListener {

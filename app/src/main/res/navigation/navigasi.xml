@@ -56,6 +56,9 @@
         <action
             android:id="@+id/action_beranda_to_pengaturanTopik"
             app:destination="@id/pengaturantopik"/>
+        <action
+            android:id="@+id/actionberanda_to_nilaisiswa"
+            app:destination="@id/nilaiSiswaFragment"/>
         
     </fragment>
 
@@ -95,4 +98,21 @@
             app:destination="@id/buatSoalFragment"/>
 
     </fragment>
+
+    <fragment
+        android:id="@+id/nilaiSiswaFragment"
+        android:name="com.example.matematika_cer.guru.NilaiSiswaFragment"
+        android:label=" Nilai Siswa">
+
+        <action
+            android:id="@+id/nilaisiswa_ke_daftarnilai"
+            app:destination="@id/daftarNilai"/>
+
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/daftarNilai"
+        android:name="com.example.matematika_cer.guru.DaftarNilaiFragment"
+        android:label="daftar nilai"/>
 </navigation>

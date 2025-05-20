@@ -12,6 +12,7 @@ data class TopikModel(
     val durasi: String,
     var jumlahSoal: Int,
     val tanggal: String,
+    val jam: String? = null, // ✅ Properti tambahan
     val isAktif: Boolean? = null,
     val jumlahMenjawab: Int? = null,
     val totalPeserta: Int? = null,
