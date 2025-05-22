@@ -25,8 +25,6 @@ class PengaturanTopikFragment : Fragment() {
     private lateinit var etTanggal: EditText
     private lateinit var etJam: EditText
     private lateinit var etDurasi: EditText
-    private lateinit var etNilaiPerSoal: EditText
-    private lateinit var cbSoalAcak: CheckBox
     private lateinit var tombolKirim: Button
 
     private var topikDipilih: TopikModel? = null
@@ -41,6 +39,7 @@ class PengaturanTopikFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Inisialisasi view
         spinner = view.findViewById(R.id.spinnerPengaturan)
         tvNamaTopik = view.findViewById(R.id.tvNamaTopikPengaturan)
         etJumlahSoal = view.findViewById(R.id.etJumlahSoalPengaturan)
@@ -48,8 +47,6 @@ class PengaturanTopikFragment : Fragment() {
         etTanggal = view.findViewById(R.id.etTanggalPengaturan)
         etJam = view.findViewById(R.id.etJamPengaturan)
         etDurasi = view.findViewById(R.id.etDurasiPengaturan)
-        etNilaiPerSoal = view.findViewById(R.id.etNilaiSoalPengaturan)
-        cbSoalAcak = view.findViewById(R.id.cbSoalAcakPengaturan)
         tombolKirim = view.findViewById(R.id.tombol_kirim)
 
         setupTanggalDanJamPicker()
@@ -81,11 +78,9 @@ class PengaturanTopikFragment : Fragment() {
                 val pembuat = etNamaPembuat.text.toString()
                 val tanggal = etTanggal.text.toString()
                 val jam = etJam.text.toString()
-                val acak = cbSoalAcak.isChecked
 
                 Toast.makeText(requireContext(), "Pengaturan disiapkan untuk topik ${topikDipilih!!.namaTopik}", Toast.LENGTH_SHORT).show()
-
-
+                // Lanjutkan logika kirim jika perlu
             }
         }
     }
@@ -123,7 +118,5 @@ class PengaturanTopikFragment : Fragment() {
         etNamaPembuat.setText("")
         etTanggal.setText("")
         etJam.setText("")
-        etNilaiPerSoal.setText("")
-        cbSoalAcak.isChecked = false
     }
 }
