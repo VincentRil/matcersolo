@@ -16,17 +16,28 @@
 
     <fragment
         android:id="@+id/detailTopikSiswaFragment"
-        android:name="com.example.matematika_cer.guru.DetailTopikSiswaFragment"
+        android:name="com.example.matematika_cer.siswa.DetailTopikSiswaFragment"
         android:label="Detail Topik">
         <action
-            android:id="@+id/action_detailTopikSiswaFragment_to_soalSiswaFragment"
+            android:id="@+id/action_detailTopikSiswaFragment_to_mulaiSoalSiswaFragment"
             app:destination="@id/mulaiSoalSiswaFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/mulaiSoalSiswaFragment"
         android:name="com.example.matematika_cer.siswa.MulaiSoalSiswaFragment"
-        android:label="Soal Siswa" />
+        android:label="Soal Siswa">
+
+        <action
+            android:id="@+id/action_mulaiSoalSiswaFragment_to_hasilKuisSiswaFragment"
+            app:destination="@id/hasilKuisSiswaFragment"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/hasilKuisSiswaFragment"
+        android:name="com.example.matematika_cer.siswa.HasilKuisSiswaFragment"
+        android:label="Hasil Kuis"/>
 
     <fragment
         android:id="@+id/daftarsiswaFragment"

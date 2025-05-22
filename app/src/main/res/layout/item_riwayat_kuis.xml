@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    card_view:cardCornerRadius="30dp"
+    card_view:cardElevation="8dp"
+    android:layout_marginBottom="20dp"
+    android:background="@android:color/transparent"
+    android:foreground="?attr/selectableItemBackground">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_topiksiswa"
+        android:padding="20dp">
+
+        <!-- Nomor urut -->
+        <TextView
+            android:id="@+id/text_nomor_riwayat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1."
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:shadowColor="#888888"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="2"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="8dp" />
+
+        <!-- Judul/topik -->
+        <TextView
+            android:id="@+id/text_judul_riwayat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Penjumlahan dan pengurangan"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:shadowColor="#888888"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="2"
+            android:layout_toEndOf="@id/text_nomor_riwayat"
+            android:layout_alignParentTop="true" />
+
+        <!-- Tanggal -->
+        <TextView
+            android:id="@+id/text_tanggal_riwayat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="25 Maret 2025"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:layout_below="@id/text_judul_riwayat"
+            android:layout_alignStart="@id/text_judul_riwayat"
+            android:layout_marginTop="8dp" />
+
+        <!-- Nilai -->
+        <TextView
+            android:id="@+id/text_nilai_riwayat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nilai: 90\\100"
+            android:textStyle="bold"
+            android:textColor="@color/kuningkuis"
+            android:textSize="18sp"
+            android:shadowColor="#888888"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="2"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/text_judul_riwayat"
+            android:layout_alignBaseline="@id/text_tanggal_riwayat"
+            android:layout_marginTop="8dp" />
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

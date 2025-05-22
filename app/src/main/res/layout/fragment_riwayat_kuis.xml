@@ -1,14 +1,35 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".siswa.RiwayatKuisFragment">
+    android:background="@color/white"
+    android:padding="16dp">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="riwayat kuis" />
+        android:id="@+id/text_judul"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Riwayat Kuis"
+        android:textStyle="bold"
+        android:textSize="28sp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="12dp"/>
 
-</FrameLayout>
+    <EditText
+        android:id="@+id/searchBarRiwayat"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:hint="cari nama topik..."
+        android:background="@drawable/bg_searchputih"
+        android:paddingHorizontal="20dp"
+        android:textSize="16sp"
+        android:drawableEnd="@drawable/ic_search"
+        android:layout_marginBottom="20dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewRiwayat"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+</LinearLayout>
