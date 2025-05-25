@@ -18,6 +18,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="10dp"
         android:text="Soal 1/10"
+        android:textColor="@color/text"
         android:textSize="18sp"
         android:textStyle="bold" />
 
@@ -25,6 +26,7 @@
         android:id="@+id/teks_nilai_sementara"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/text"
         app:layout_constraintTop_toBottomOf="@id/teks_nomor_soal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -56,9 +58,10 @@
         app:layout_constraintTop_toBottomOf="@id/teks_nilai_sementara"
         android:gravity="center"
         app:layout_goneMarginTop="30dp"
-        android:text="10 + 5 - 3 ="
+        android:text="KAMU MEMBUKA LAYOUT YANG BENAR!"
         android:textSize="20sp"
         android:textStyle="bold"
+        android:textColor="@color/text"
         android:layout_marginTop="50dp"
         android:layout_marginBottom="16dp" />
 
@@ -76,7 +79,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="A. 15"
-            android:background="@drawable/bg_opsi_siswa"
+            android:background="@drawable/opsi_selector"
             android:textColor="@color/black"
             android:buttonTint="@color/black"/>
         <androidx.appcompat.widget.AppCompatRadioButton
@@ -84,7 +87,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="B. 5"
-            android:background="@drawable/bg_opsi_siswa"
+            android:background="@drawable/opsi_selector"
             android:textColor="@color/black"
             android:buttonTint="@color/black"/>
         <androidx.appcompat.widget.AppCompatRadioButton
@@ -93,7 +96,7 @@
             android:layout_height="wrap_content"
             android:text="C. 12"
             android:buttonTint="@color/black"
-            android:background="@drawable/bg_opsi_siswa"
+            android:background="@drawable/opsi_selector"
             android:textColor="@color/black"/>
         <androidx.appcompat.widget.AppCompatRadioButton
             android:id="@+id/jawaban_d"
@@ -102,7 +105,7 @@
             android:text="D. 20"
             android:buttonTint="@color/black"
 
-            android:background="@drawable/bg_opsi_siswa"
+            android:background="@drawable/opsi_selector"
             android:textColor="@color/black"/>
     </RadioGroup>
 

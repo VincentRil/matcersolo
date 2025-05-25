@@ -7,16 +7,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.matematika_cer.R
 
-data class RiwayatKuisModel(
-    val namaTopik: String,
-    val tanggal: String,
-    val nilai: Int,
-    val jumlahBenar: Int,
-    val jumlahSoal: Int
-)
-
 class RiwayatKuisAdapter(
-    private var list: List<RiwayatKuisModel>
+    private var list: List<NilaiRiwayatModel>
 ) : RecyclerView.Adapter<RiwayatKuisAdapter.RiwayatViewHolder>() {
 
     inner class RiwayatViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -35,14 +27,14 @@ class RiwayatKuisAdapter(
     override fun onBindViewHolder(holder: RiwayatViewHolder, position: Int) {
         val item = list[position]
         holder.nomor.text = "${position + 1}."
-        holder.judul.text = item.namaTopik
-        holder.tanggal.text = item.tanggal
-        holder.nilai.text = "Nilai: ${item.nilai}\\100"
+        holder.judul.text = item.namaTopik ?: "-"
+        holder.tanggal.text = item.waktuSubmit ?: "-"
+        holder.nilai.text = "Nilai: ${item.skor ?: 0}/100"
     }
 
     override fun getItemCount(): Int = list.size
 
-    fun filterList(filtered: List<RiwayatKuisModel>) {
+    fun filterList(filtered: List<NilaiRiwayatModel>) {
         list = filtered
         notifyDataSetChanged()
     }

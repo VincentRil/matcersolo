@@ -28,9 +28,9 @@ class BuatSoalFragment : Fragment() {
     private lateinit var tvSoalKe: TextView
     private lateinit var btnSimpan: Button
     private lateinit var btnKembali: Button
-    private lateinit var imgSoal: ImageView
+//    private lateinit var imgSoal: ImageView
 
-    private var uriGambar: Uri? = null
+//    private var uriGambar: Uri? = null
     private lateinit var topik: TopikModel
     private val topikViewModel: SharedTopikViewModel by activityViewModels()
 
@@ -38,12 +38,12 @@ class BuatSoalFragment : Fragment() {
     private var indeksSoal = 1
     private val listSoalBaru = mutableListOf<SoalModel>()
 
-    private val launcherGaleri = registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
-        uri?.let {
-            uriGambar = it
-            imgSoal.setImageURI(it)
-        }
-    }
+//    private val launcherGaleri = registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
+//        uri?.let {
+//            uriGambar = it
+//            imgSoal.setImageURI(it)
+//        }
+//    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -64,11 +64,11 @@ class BuatSoalFragment : Fragment() {
         tvSoalKe = view.findViewById(R.id.tvSoalKe)
         btnSimpan = view.findViewById(R.id.btnSoalBerikut)
         btnKembali = view.findViewById(R.id.btnKembali)
-        imgSoal = view.findViewById(R.id.imgSoal)
+//        imgSoal = view.findViewById(R.id.imgSoal)
 
-        imgSoal.setOnClickListener {
-            launcherGaleri.launch("image/*")
-        }
+//        imgSoal.setOnClickListener {
+//            launcherGaleri.launch("image/*")
+//        }
 
         topik = arguments?.getParcelable("topik") ?: run {
             Toast.makeText(requireContext(), "Data topik tidak ditemukan", Toast.LENGTH_SHORT).show()
@@ -110,6 +110,11 @@ class BuatSoalFragment : Fragment() {
                     }
                     topik.jumlahSoal = topik.soalList.size
                     topikViewModel.updateTopikLama(topik)
+
+                    // ⬇️ Simpan topik beserta soal-nya ke prefs
+                    topikViewModel.simpanTopikKePrefs(requireContext())
+
+
                     Toast.makeText(requireContext(), "Semua soal berhasil disimpan", Toast.LENGTH_SHORT).show()
                     findNavController().popBackStack()
                 }
@@ -174,7 +179,7 @@ class BuatSoalFragment : Fragment() {
             pilihanC = etC.text.toString(),
             pilihanD = etD.text.toString(),
             jawabanBenar = jawabanBenar,
-            gambar = uriGambar?.toString()
+//            gambar = uriGambar?.toString()
         )
     }
 
@@ -192,10 +197,10 @@ class BuatSoalFragment : Fragment() {
             "D" -> rgJawaban.check(R.id.rbD)
         }
 
-        soal.gambar?.let {
-            imgSoal.setImageURI(Uri.parse(it))
-            uriGambar = Uri.parse(it)
-        }
+//        soal.gambar?.let {
+//            imgSoal.setImageURI(Uri.parse(it))
+//            uriGambar = Uri.parse(it)
+//        }
     }
 
     private fun isiFormJikaAda() {
@@ -213,7 +218,7 @@ class BuatSoalFragment : Fragment() {
         etC.setText("")
         etD.setText("")
         rgJawaban.clearCheck()
-        imgSoal.setImageResource(R.drawable.ic_image_placeholder)
-        uriGambar = null
+//        imgSoal.setImageResource(R.drawable.ic_image_placeholder)
+//        uriGambar = null
     }
 }

@@ -6,5 +6,7 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class NilaiSiswaModel(
     val namaSiswa: String,
-    val nilai: Int
-) : Parcelable
+    val nilai: Int?,
+    val waktuSubmit: String?
+)
+ : Parcelable

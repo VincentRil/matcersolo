@@ -1,4 +1,3 @@
-// TopikNilaiAdapter.kt
 package com.example.matematika_cer.guru
 
 import android.view.LayoutInflater
@@ -7,11 +6,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.matematika_cer.R
-import com.example.matematika_cer.model.TopikModel
+import com.example.matematika_cer.guru.TopikNilaiModel
 
 class TopikNilaiAdapter(
-    private val list: List<TopikModel>,
-    private val onClick: (TopikModel) -> Unit
+    private var list: List<TopikNilaiModel>,
+    private val onClick: (TopikNilaiModel) -> Unit
 ) : RecyclerView.Adapter<TopikNilaiAdapter.ViewHolder>() {
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -40,13 +39,15 @@ class TopikNilaiAdapter(
 
         holder.namaTopik.text = topik.namaTopik
         holder.jumlahSoal.text = "Jumlah Soal: ${topik.jumlahSoal}"
-        holder.durasi.text = "Durasi: ${topik.durasi} menit"
-        holder.tanggalJam.text = "Pelaksanaan: ${topik.tanggal} ${topik.jam ?: ""}"
-
-        val total = topik.totalPeserta ?: 0
-        val sudah = topik.jumlahMenjawab ?: 0
-        holder.menjawab.text = "Sudah menjawab: $sudah dari $total siswa"
+        holder.durasi.text = "Durasi: ${topik.durasiMenit} menit"
+        holder.tanggalJam.text = "Pelaksanaan: ${topik.tanggalMulai} ${topik.jamPelaksanaan.orEmpty()}"
+        holder.menjawab.text = "Sudah menjawab: ${topik.jumlahMenjawab} dari ${topik.totalPeserta} siswa"
     }
 
     override fun getItemCount(): Int = list.size
+
+    fun updateData(newList: List<TopikNilaiModel>) {
+        list = newList
+        notifyDataSetChanged()
+    }
 }

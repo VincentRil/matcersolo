@@ -18,11 +18,40 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textColor="@color/black"
             android:text="Nama Topik" />
 
         <TextView
             android:id="@+id/tvNamaTopikPengaturan"
+            android:textColor="@color/black"
+            android:textColorHint="@color/text"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:minHeight="48dp"
+            android:paddingVertical="8dp"
+            android:background="@drawable/bg_isian_tes_pengaturan"
+            android:text="-" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="12dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/black"
+            android:text="Deskripsi Topik" />
+
+        <EditText
+            android:id="@+id/deskripsiTopikPengaturan"
+            android:layout_width="0dp"
+            android:textColor="@color/black"
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:minHeight="48dp"
@@ -43,6 +72,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textColor="@color/black"
             android:text="Jumlah Soal" />
 
         <EditText
@@ -51,7 +81,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:minHeight="48dp"
+            android:textColorHint="@color/text"
             android:paddingVertical="8dp"
+            android:textColor="@color/black"
             android:background="@drawable/bg_isian_tes_pengaturan"
             android:inputType="number"
             android:hint="Masukkan jumlah soal" />
@@ -69,6 +101,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textColor="@color/black"
             android:text="Nama Pembuat" />
 
         <EditText
@@ -77,6 +110,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:minHeight="48dp"
+            android:textColorHint="@color/text"
+            android:textColor="@color/black"
             android:paddingVertical="8dp"
             android:background="@drawable/bg_isian_tes_pengaturan"
             android:inputType="textPersonName"
@@ -95,6 +130,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textColor="@color/black"
             android:text="Tanggal pelaksanaan" />
 
         <EditText
@@ -103,7 +139,40 @@
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:minHeight="48dp"
+            android:textColorHint="@color/text"
             android:inputType="date"
+            android:textColor="@color/black"
+            android:paddingVertical="8dp"
+            android:background="@drawable/bg_isian_tes_pengaturan"
+            android:focusable="false"
+            android:clickable="true"
+            android:hint="Pilih tanggal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="12dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/black"
+            android:text="Tanggal selesai pelaksanaan" />
+
+        <EditText
+            android:id="@+id/etTanggalselesaiPengaturan"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:minHeight="48dp"
+            android:textColorHint="@color/text"
+            android:inputType="date"
+
+            android:textColor="@color/black"
             android:paddingVertical="8dp"
             android:background="@drawable/bg_isian_tes_pengaturan"
             android:focusable="false"
@@ -123,6 +192,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textColor="@color/black"
             android:text="Jam pelaksanaan" />
 
         <EditText
@@ -132,6 +202,7 @@
             android:layout_weight="2"
             android:minHeight="48dp"
             android:inputType="time"
+            android:textColor="@color/black"
             android:paddingVertical="8dp"
             android:background="@drawable/bg_isian_tes_pengaturan"
             android:focusable="false"
@@ -151,6 +222,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textColor="@color/black"
             android:text="Durasi (menit)" />
 
         <EditText
@@ -160,6 +232,8 @@
             android:layout_weight="2"
             android:minHeight="48dp"
             android:paddingVertical="8dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/text"
             android:background="@drawable/bg_isian_tes_pengaturan"
             android:inputType="number"
             android:hint="Masukkan durasi" />

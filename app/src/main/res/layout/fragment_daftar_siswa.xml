@@ -22,33 +22,28 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Cari nama Siswa"
-        android:textColor="@color/text"
-        android:textColorHint="@color/black"
+        android:hint="Cari nama/username siswa"
         app:hintTextColor="@color/black"
-
         app:startIconDrawable="@drawable/ic_search">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/searchSiswa"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            />
+            android:textColor="@color/black" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- Sort & Lihat Data -->
+    <!-- Info -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingVertical="8dp"
-        >
+        android:paddingVertical="8dp">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
             android:layout_weight="1"
+            android:layout_height="wrap_content"
             android:textColor="@color/black"
             android:text="Diurutkan berdasarkan alfabet"
             android:textSize="14sp" />
@@ -74,7 +69,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="Nomor"
+            android:text="ID"
             android:textColor="@color/black"
             android:textStyle="bold"
             android:gravity="center" />
@@ -83,9 +78,27 @@
             android:layout_width="0dp"
             android:layout_weight="2"
             android:layout_height="wrap_content"
-            android:text="Nama Siswa"
-            android:textStyle="bold"
+            android:text="Nama Pengguna"
             android:textColor="@color/black"
+            android:textStyle="bold"
+            android:gravity="center" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Kata Sandi"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:gravity="center" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="wrap_content"
+            android:text="Nama Siswa"
+            android:textColor="@color/black"
+            android:textStyle="bold"
             android:gravity="center" />
     </LinearLayout>
 

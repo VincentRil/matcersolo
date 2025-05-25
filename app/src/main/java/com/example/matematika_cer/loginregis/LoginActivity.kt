@@ -35,6 +35,7 @@ class LoginActivity : AppCompatActivity() {
             }
 
             val user = User(
+                id = null,
                 namaLengkap = null,
                 username = username,
                 password = password,
@@ -42,7 +43,8 @@ class LoginActivity : AppCompatActivity() {
                 kelas = selectedKelas
             )
 
-            val userApi = ApiClient.instance.create(UserApi::class.java)
+            val userApi = ApiClient.getUserApi()
+
             userApi.login(user).enqueue(object : Callback<User> {
                 override fun onResponse(call: Call<User>, response: Response<User>) {
                     if (response.isSuccessful) {
@@ -60,6 +62,7 @@ class LoginActivity : AppCompatActivity() {
                             // ✅ Simpan ke SharedPreferences
                             val sharedPref = getSharedPreferences("UserSession", MODE_PRIVATE)
                             sharedPref.edit().apply {
+                                putInt("user_id", userData.id ?: -1)
                                 putString("nama", nama)
                                 putString("role", role)
                                 putString("kelas", kelasAsli)

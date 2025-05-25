@@ -61,30 +61,30 @@
                     android:layout_marginBottom="12dp" />
 
                 <!-- Gambar Soal -->
-                <ImageView
-                    android:id="@+id/imgSoal"
-                    android:layout_width="72dp"
-                    android:layout_height="72dp"
-                    android:layout_gravity="center_horizontal"
-                    android:src="@drawable/ic_image_placeholder"
-                    android:layout_marginBottom="8dp" />
+<!--                <ImageView-->
+<!--                    android:id="@+id/imgSoal"-->
+<!--                    android:layout_width="72dp"-->
+<!--                    android:layout_height="72dp"-->
+<!--                    android:layout_gravity="center_horizontal"-->
+<!--                    android:src="@drawable/ic_image_placeholder"-->
+<!--                    android:layout_marginBottom="8dp" />-->
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Pilih Gambar"
-                    android:textColor="@color/black"
-                    android:textSize="14sp"
-                    android:layout_gravity="center_horizontal" />
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Pilih Gambar"-->
+<!--                    android:textColor="@color/black"-->
+<!--                    android:textSize="14sp"-->
+<!--                    android:layout_gravity="center_horizontal" />-->
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Tambah gambar (maks 2MB, jpg) *opsional"
-                    android:textColor="@color/text"
-                    android:textSize="12sp"
-                    android:layout_marginBottom="16dp"
-                    android:layout_gravity="center_horizontal" />
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Tambah gambar (maks 2MB, jpg) *opsional"-->
+<!--                    android:textColor="@color/text"-->
+<!--                    android:textSize="12sp"-->
+<!--                    android:layout_marginBottom="16dp"-->
+<!--                    android:layout_gravity="center_horizontal" />-->
 
                 <!-- Pertanyaan -->
                 <com.google.android.material.textfield.TextInputLayout

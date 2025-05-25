@@ -73,8 +73,17 @@ class RegisterActivity : AppCompatActivity() {
                 }
             }
 
-            val user = User(nama, username, sandi, role.lowercase(), kelas)
-            val userApi = ApiClient.instance.create(UserApi::class.java)
+            val user = User(
+                id = null,
+                namaLengkap = nama,
+                username = username,
+                password = sandi,
+                role = role.lowercase(),
+                kelas = kelas
+            )
+
+            val userApi = ApiClient.getService().create(UserApi::class.java)
+
 
             userApi.register(user).enqueue(object : Callback<User> {
                 override fun onResponse(call: Call<User>, response: Response<User>) {

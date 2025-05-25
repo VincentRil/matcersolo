@@ -1,6 +1,7 @@
 package com.example.matematika_cer.guru
 
 import android.app.AlertDialog
+import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -21,6 +22,7 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import java.text.SimpleDateFormat
 import java.util.*
+
 class DaftarTopikFragment : Fragment() {
 
     private lateinit var viewPager: ViewPager2
@@ -46,22 +48,26 @@ class DaftarTopikFragment : Fragment() {
         searchEditText = view.findViewById(R.id.searchEditText)
         tambahTopikBtn = view.findViewById(R.id.tambahTopikBtn)
 
-        // Inisialisasi adapter sekali saja
+        // Load topik dari prefs ketika fragment baru dibuka
+        topikViewModel.loadTopikDariPrefs(requireContext())
+
         topikAdapter = TopikPagerAdapter(
             requireActivity(),
             onEditClick = { topik ->
                 topikViewModel.updateTopikLama(topik)
                 refreshTopik()
+                topikViewModel.simpanTopikKePrefs(requireContext()) // simpan setelah edit
             },
             onDeleteClick = { topik ->
                 topikViewModel.hapusTopik(topik)
                 refreshTopik()
+                topikViewModel.simpanTopikKePrefs(requireContext()) // simpan setelah hapus
             }
         )
         viewPager.adapter = topikAdapter
         TabLayoutMediator(tabLayout, viewPager) { _, _ -> }.attach()
 
-        // Awal
+        // Awal tampilkan semua topik yang ada
         refreshTopik()
 
         // Pencarian
@@ -72,7 +78,6 @@ class DaftarTopikFragment : Fragment() {
                 }
                 topikAdapter.submitData(hasil.chunked(3))
             }
-
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun afterTextChanged(s: Editable?) {}
         })
@@ -84,6 +89,8 @@ class DaftarTopikFragment : Fragment() {
     private fun refreshTopik() {
         val grouped = topikViewModel.daftarTopikSementara.chunked(3)
         topikAdapter.submitData(grouped)
+        // Setiap refresh, simpan ke prefs (agar selalu update)
+        topikViewModel.simpanTopikKePrefs(requireContext())
     }
 
     private fun tampilkanDialogTambahTopik() {
@@ -104,17 +111,15 @@ class DaftarTopikFragment : Fragment() {
                         id = topikViewModel.generateTopikId(),
                         namaTopik = nama,
                         deskripsiTopik = "",
-                        durasi = "0",
                         jumlahSoal = 0,
-                        tanggal = getTodayDate(),
-                        isAktif = false,
-                        jumlahMenjawab = 0,
-                        totalPeserta = 0
+                        durasiMenit = 0,
+                        tanggalMulai = "",
+                        tanggalSelesai = ""
                     )
-
                     topikViewModel.tambahTopik(topikBaru)
                     refreshTopik()
                     Toast.makeText(requireContext(), "Topik ditambahkan", Toast.LENGTH_SHORT).show()
+                    topikViewModel.simpanTopikKePrefs(requireContext()) // simpan setelah tambah
                 }
             }
             .setNegativeButton("Batal", null)
@@ -126,5 +131,3 @@ class DaftarTopikFragment : Fragment() {
         return sdf.format(Date())
     }
 }
-
-

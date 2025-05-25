@@ -47,6 +47,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:textColor="@color/black"
                 android:textStyle="bold"
                 android:text="Kelas: -" />
 
@@ -54,6 +55,7 @@
                 android:id="@+id/text_pembuat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/black"
                 android:layout_weight="1"
                 android:textStyle="bold"
                 android:text="Dibuat oleh: -" />
@@ -62,6 +64,7 @@
                 android:id="@+id/text_jumlah_soal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/black"
                 android:layout_weight="1"
                 android:textStyle="bold"
                 android:text="Jumlah soal: -" />
@@ -70,10 +73,43 @@
                 android:id="@+id/text_durasi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/black"
                 android:layout_weight="1"
                 android:textStyle="bold"
                 android:text="Durasi: -" />
+
+            <!-- Tanggal Mulai -->
+            <TextView
+                android:id="@+id/text_tanggal_mulai"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_weight="1"
+                android:textStyle="bold"
+                android:text="Tanggal Mulai: -" />
+
+            <!-- Tanggal Selesai -->
+            <TextView
+                android:id="@+id/text_tanggal_selesai"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_weight="1"
+                android:textStyle="bold"
+                android:text="Tanggal Selesai: -" />
+
+            <!-- Jam Pelaksanaan -->
+            <TextView
+                android:id="@+id/text_jam_pelaksanaan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_weight="1"
+                android:textStyle="bold"
+                android:text="Jam Pelaksanaan: -" />
+
         </LinearLayout>
+
     </androidx.cardview.widget.CardView>
 
     <!-- Tombol Aksi -->
@@ -95,6 +131,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/kartu_detail_siswa"
             android:text="Mulai"
+            android:textColor="@color/black"
             android:background="@drawable/login_selector"
             android:textStyle="bold" />
 

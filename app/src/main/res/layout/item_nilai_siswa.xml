@@ -1,19 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
+    android:background="@color/white"
+    android:layout_marginTop="10dp"
+    android:layout_marginEnd="5dp"
+    android:layout_marginStart="5dp"
     android:padding="12dp">
 
     <TextView
         android:id="@+id/tvNamaSiswa"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Nama Siswa" />
+        android:layout_weight="2"
+        android:text="Nama Siswa"
+        android:textColor="@color/text"
+        android:textSize="16sp"
+        android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/tvNilaiSiswa"
-        android:layout_width="wrap_content"
+        android:id="@+id/tvNilai"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="100" />
+        android:layout_weight="2"
+        android:text="95"
+        android:textColor="@color/text"
+        android:gravity="center"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tvWaktuSubmit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:textColor="@color/text"
+        android:layout_marginStart="30dp"
+        android:text="2024-05-27T09:45"
+        android:textSize="14sp"
+        android:gravity="end"/>
 </LinearLayout>

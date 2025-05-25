@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,15 +13,14 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.matematika_cer.R
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
+import com.example.matematika_cer.network.ApiClient
 
 class RiwayatKuisFragment : Fragment() {
 
     private lateinit var adapter: RiwayatKuisAdapter
     private lateinit var recyclerView: RecyclerView
     private lateinit var searchBar: EditText
-    private var riwayatList: List<RiwayatKuisModel> = listOf()
+    private var riwayatList: List<NilaiRiwayatModel> = listOf()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,18 +34,23 @@ class RiwayatKuisFragment : Fragment() {
         recyclerView = view.findViewById(R.id.recyclerViewRiwayat)
         searchBar = view.findViewById(R.id.searchBarRiwayat)
 
-        // Siapkan RecyclerView
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        riwayatList = ambilRiwayatKuis(requireContext())
         adapter = RiwayatKuisAdapter(riwayatList)
         recyclerView.adapter = adapter
 
-        // Fitur pencarian riwayat
+        // Ambil userId dari SharedPreferences (session)
+        val prefs = requireContext().getSharedPreferences("UserSession", Context.MODE_PRIVATE)
+        val userId = prefs.getInt("user_id", -1)
+        if (userId != -1) {
+            ambilRiwayatKuisDariServer(userId)
+        }
+
+        // Fitur pencarian/filter nama topik
         searchBar.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 val keyword = s.toString().lowercase()
                 val filtered = riwayatList.filter {
-                    it.namaTopik.lowercase().contains(keyword)
+                    it.namaTopik?.lowercase()?.contains(keyword) == true
                 }
                 adapter.filterList(filtered)
             }
@@ -55,12 +60,31 @@ class RiwayatKuisFragment : Fragment() {
         })
     }
 
-    // Ambil riwayat kuis dari SharedPreferences
-    private fun ambilRiwayatKuis(context: Context): List<RiwayatKuisModel> {
-        val prefs = context.getSharedPreferences("riwayat_kuis", Context.MODE_PRIVATE)
-        val gson = Gson()
-        val json = prefs.getString("list_riwayat", "[]")
-        val type = object : TypeToken<ArrayList<RiwayatKuisModel>>() {}.type
-        return gson.fromJson(json, type)
+    // Retrofit call untuk ambil riwayat dari backend
+    private fun ambilRiwayatKuisDariServer(userId: Int) {
+        val api = ApiClient.getApiService()
+        api.getRiwayatNilai(userId).enqueue(object : retrofit2.Callback<List<NilaiRiwayatModel>> {
+            override fun onResponse(
+                call: retrofit2.Call<List<NilaiRiwayatModel>>,
+                response: retrofit2.Response<List<NilaiRiwayatModel>>
+            ) {
+                if (response.isSuccessful && response.body() != null) {
+                    val riwayat = response.body()!!
+                    riwayatList = riwayat
+                    adapter.filterList(riwayat)
+                } else {
+                    Log.e("RiwayatKuisFragment", "Gagal ambil data: code=${response.code()} body=${response.errorBody()?.string()}")
+                    // Optional: tampilkan pesan error ke user (misal pakai Toast)
+                }
+            }
+
+            override fun onFailure(
+                call: retrofit2.Call<List<NilaiRiwayatModel>>,
+                t: Throwable
+            ) {
+                Log.e("RiwayatKuisFragment", "onFailure: ${t.message}", t)
+                // Optional: tampilkan pesan error ke user
+            }
+        })
     }
 }
