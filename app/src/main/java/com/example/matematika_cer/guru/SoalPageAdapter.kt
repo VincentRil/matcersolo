@@ -17,6 +17,7 @@ class SoalPageAdapter(
 ) : RecyclerView.Adapter<SoalPageAdapter.SoalViewHolder>() {
 
     inner class SoalViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val nomorSoal: TextView = itemView.findViewById(R.id.nomorSoal)
         val teksPertanyaan: TextView = itemView.findViewById(R.id.teksPertanyaan)
         val opsiA: TextView = itemView.findViewById(R.id.opsiA)
         val opsiB: TextView = itemView.findViewById(R.id.opsiB)
@@ -56,6 +57,7 @@ class SoalPageAdapter(
 
     override fun onBindViewHolder(holder: SoalViewHolder, position: Int) {
         val soal = list[position]
+        holder.nomorSoal.text = "${position + 1}."
         holder.teksPertanyaan.text = soal.pertanyaan
         holder.opsiA.text = "A. ${soal.pilihanA}"
         holder.opsiB.text = "B. ${soal.pilihanB}"

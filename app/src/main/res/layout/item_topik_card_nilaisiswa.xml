@@ -9,11 +9,14 @@
     app:cardElevation="4dp"
     android:foreground="?android:attr/selectableItemBackground"
     android:clickable="true"
-    android:focusable="true">
+    android:focusable="true"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:background="@drawable/bg_topik_nilaisiswa"
         android:orientation="vertical">
 
         <TextView
@@ -21,6 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Nama Topik"
+            android:textColor="@color/text"
             android:textStyle="bold"
             android:textSize="18sp"
             android:layout_marginBottom="6dp"/>
@@ -29,24 +33,28 @@
             android:id="@+id/detailJumlahSoal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/text"
             android:text="Jumlah Soal: 10"/>
 
         <TextView
             android:id="@+id/detailDurasi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/text"
             android:text="Durasi: 60 menit"/>
 
         <TextView
             android:id="@+id/detailTanggalJam"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/text"
             android:text="Pelaksanaan: 21 Mei 2025, 09:00"/>
 
         <TextView
             android:id="@+id/detailJumlahMenjawab"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/text"
             android:text="Sudah menjawab: 8 dari 20 siswa"/>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

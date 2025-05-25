@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    android:background="@color/white">
+    android:background="@color/birunavbar">
 
     <TextView
         android:id="@+id/tvJudulDaftarSoal"
@@ -15,18 +15,21 @@
         android:textSize="20sp"
         android:textStyle="bold"
         android:layout_marginBottom="8dp"
-        android:textColor="@color/black" />
+        android:textColor="@color/white" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnTambahSoal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Tambah Soal"
+        android:textColor="@color/biru"
+        android:background="@drawable/regis_selector"
         android:layout_gravity="end"
         android:layout_marginBottom="16dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewSoal"
+        android:background="@color/biru"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
