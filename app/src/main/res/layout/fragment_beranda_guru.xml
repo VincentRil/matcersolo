@@ -6,6 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".guru.BerandaGuruFragment">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Semester 1/2025"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/text"
+        android:textSize="15sp"/>
+
+
     <!-- Tombol Logout -->
     <ImageView
         android:id="@+id/logoutbtn"

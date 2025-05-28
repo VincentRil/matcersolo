@@ -45,7 +45,7 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
-            android:text="Diurutkan berdasarkan alfabet"
+            android:text="Diurutkan berdasarkan akun terakhir dibuat"
             android:textSize="14sp" />
 
         <TextView

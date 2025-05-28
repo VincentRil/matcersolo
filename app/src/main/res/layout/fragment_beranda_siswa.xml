@@ -7,6 +7,17 @@
     android:background="@color/white"
     android:padding="16dp">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Semester 1/2025"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="10dp"
+
+        android:textColor="@color/text"
+        android:textSize="15sp"/>
+
     <ImageView
         android:id="@+id/logoutbtnsiswa"
         android:layout_width="wrap_content"
